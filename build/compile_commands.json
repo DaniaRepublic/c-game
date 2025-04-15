@@ -1,0 +1,1886 @@
+[
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build",
+  "command": "/usr/bin/cc -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -std=gnu11 -arch arm64 -o CMakeFiles/RaylibBox2DFlecs.dir/src/main.c.o -c /Users/markinivan/Documents/Programming/c_game/src/main.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/src/main.c",
+  "output": "CMakeFiles/RaylibBox2DFlecs.dir/src/main.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build",
+  "command": "/usr/bin/cc -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -std=gnu11 -arch arm64 -o CMakeFiles/RaylibBox2DFlecs.dir/src/lib/utils.c.o -c /Users/markinivan/Documents/Programming/c_game/src/lib/utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/src/lib/utils.c",
+  "output": "CMakeFiles/RaylibBox2DFlecs.dir/src/lib/utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build",
+  "command": "/usr/bin/cc -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -std=gnu11 -arch arm64 -o CMakeFiles/RaylibBox2DFlecs.dir/src/systems/onstart.c.o -c /Users/markinivan/Documents/Programming/c_game/src/systems/onstart.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/src/systems/onstart.c",
+  "output": "CMakeFiles/RaylibBox2DFlecs.dir/src/systems/onstart.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build",
+  "command": "/usr/bin/cc -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -std=gnu11 -arch arm64 -o CMakeFiles/RaylibBox2DFlecs.dir/src/systems/preupdate.c.o -c /Users/markinivan/Documents/Programming/c_game/src/systems/preupdate.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/src/systems/preupdate.c",
+  "output": "CMakeFiles/RaylibBox2DFlecs.dir/src/systems/preupdate.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build",
+  "command": "/usr/bin/cc -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -std=gnu11 -arch arm64 -o CMakeFiles/RaylibBox2DFlecs.dir/src/systems/onupdate.c.o -c /Users/markinivan/Documents/Programming/c_game/src/systems/onupdate.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/src/systems/onupdate.c",
+  "output": "CMakeFiles/RaylibBox2DFlecs.dir/src/systems/onupdate.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/aabb.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/aabb.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/aabb.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/aabb.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/arena_allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/arena_allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/arena_allocator.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/arena_allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/array.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/array.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/array.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/array.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/bitset.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/bitset.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/bitset.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/bitset.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/body.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/body.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/body.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/body.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/broad_phase.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/broad_phase.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/broad_phase.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/broad_phase.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/constraint_graph.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/constraint_graph.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/constraint_graph.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/constraint_graph.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/contact.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/contact.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/contact.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/contact.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/contact_solver.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/contact_solver.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/contact_solver.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/contact_solver.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/core.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/core.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/core.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/core.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/distance.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/distance.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/distance.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/distance.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/distance_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/distance_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/distance_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/distance_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/dynamic_tree.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/dynamic_tree.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/dynamic_tree.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/dynamic_tree.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/geometry.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/geometry.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/geometry.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/geometry.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/hull.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/hull.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/hull.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/hull.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/id_pool.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/id_pool.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/id_pool.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/id_pool.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/island.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/island.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/island.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/island.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/manifold.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/manifold.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/manifold.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/manifold.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/math_functions.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/math_functions.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/math_functions.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/math_functions.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/motor_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/motor_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/motor_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/motor_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/mouse_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/mouse_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/mouse_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/mouse_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/mover.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/mover.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/mover.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/mover.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/prismatic_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/prismatic_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/prismatic_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/prismatic_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/revolute_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/revolute_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/revolute_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/revolute_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/sensor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/sensor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/sensor.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/sensor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/shape.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/shape.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/shape.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/shape.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/solver.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/solver.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/solver.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/solver.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/solver_set.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/solver_set.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/solver_set.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/solver_set.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/table.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/table.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/table.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/table.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/timer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/timer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/timer.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/timer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/types.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/types.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/types.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/types.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/weld_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/weld_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/weld_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/weld_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/wheel_joint.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/wheel_joint.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/wheel_joint.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/wheel_joint.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src",
+  "command": "/usr/bin/cc -DBOX2D_ENABLE_SIMD -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/../include -I/Users/markinivan/Documents/Programming/c_game/build/lib/box2d/src -I/Users/markinivan/Documents/Programming/c_game/lib/box2d/src -std=gnu17 -arch arm64 -fvisibility=hidden -ffp-contract=off -Wmissing-prototypes -Werror -o CMakeFiles/box2d.dir/world.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/box2d/src/world.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/box2d/src/world.c",
+  "output": "lib/box2d/src/CMakeFiles/box2d.dir/world.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/raudio.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/raudio.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/raudio.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/raudio.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/rcore.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rcore.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rcore.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/rmodels.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rmodels.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rmodels.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/rmodels.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/rshapes.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rshapes.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rshapes.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/rshapes.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/rtext.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rtext.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rtext.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/rtext.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/rtextures.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rtextures.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/rtextures.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/rtextures.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib",
+  "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99 -arch arm64 -o CMakeFiles/raylib.dir/utils.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/utils.c",
+  "output": "lib/raylib/raylib/CMakeFiles/raylib.dir/utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/context.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/context.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/context.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/init.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/init.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/init.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/input.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/input.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/input.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/monitor.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/platform.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/platform.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/platform.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/vulkan.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/vulkan.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/vulkan.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/window.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/window.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/window.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/egl_context.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/egl_context.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/egl_context.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/osmesa_context.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/osmesa_context.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/osmesa_context.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_init.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_init.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_init.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_monitor.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_window.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_window.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_window.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/null_joystick.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_joystick.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/null_joystick.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_time.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_time.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_time.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_module.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/posix_module.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/posix_module.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_thread.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/posix_thread.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/posix_thread.c",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_init.m.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_init.m",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_init.m",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_joystick.m.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_joystick.m",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_joystick.m",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_monitor.m.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_monitor.m",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_monitor.m",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/cocoa_window.m.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_window.m",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/cocoa_window.m",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src",
+  "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/include -I/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src -I/Users/markinivan/Documents/Programming/c_game/build/lib/raylib/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -arch arm64 -fPIC -Wall -o CMakeFiles/glfw.dir/nsgl_context.m.o -c /Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/nsgl_context.m",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/raylib/src/external/glfw/src/nsgl_context.m",
+  "output": "lib/raylib/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/alerts.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/alerts.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/alerts.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/alerts.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/app.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/app.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/app.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/app.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/doc.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/doc.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/doc.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/doc.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/flecs_cpp.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/flecs_cpp.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/flecs_cpp.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/flecs_cpp.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/http.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/http.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/http.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/http.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/journal.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/journal.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/journal.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/journal.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/deserialize.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/deserialize.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/deserialize_value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize_value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize_value.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/deserialize_value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/json.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/json.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/json.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/json.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_entity.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_entity.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_entity.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_entity.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_field_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_field_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_field_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_field_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result_query.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_query.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_query.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result_query.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result_table.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_table.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_table.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_iter_result_table.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_query_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_query_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_query_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_query_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_type_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_type_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_type_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_type_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_value.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/json/serialize_world.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_world.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_world.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/json/serialize_world.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/log.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/log.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/log.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/log.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/api.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/c_utils.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/c_utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/c_utils.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/c_utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/cursor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/cursor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/cursor.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/cursor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/definitions.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/definitions.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/definitions.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/definitions.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/meta.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/meta.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/meta.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/meta.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/rtt_lifecycle.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/rtt_lifecycle.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/rtt_lifecycle.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/rtt_lifecycle.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/meta/serialized.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/serialized.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/serialized.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/meta/serialized.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/metrics.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/metrics.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/metrics.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/metrics.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/module.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/module.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/module.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/module.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/os_api_impl/os_api_impl.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/os_api_impl/os_api_impl.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/os_api_impl/os_api_impl.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/os_api_impl/os_api_impl.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/parser/tokenizer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/parser/tokenizer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/parser/tokenizer.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/parser/tokenizer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/pipeline/pipeline.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/pipeline.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/pipeline.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/pipeline/pipeline.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/pipeline/worker.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/worker.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/worker.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/pipeline/worker.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/query_dsl/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/query_dsl/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/query_dsl/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/query_dsl/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/rest.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/rest.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/rest.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/rest.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/ast.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/ast.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/ast.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/ast.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/ast.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/ast.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/ast.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/ast.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/stack.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/stack.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/stack.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/stack.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/util.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/util.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/util.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/util.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_fold.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_fold.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_fold.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_fold.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_free.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_free.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_free.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_free.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_to_str.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_to_str.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_to_str.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_to_str.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_type.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_type.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_type.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/expr/visit_type.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/function.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/function.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/function.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/function.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/functions_builtin.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_builtin.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_builtin.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/functions_builtin.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/functions_math.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_math.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_math.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/functions_math.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/script.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/script.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/script.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/script.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/serialize.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/serialize.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/serialize.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/serialize.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/template.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/template.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/template.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/template.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/vars.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/vars.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/vars.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/vars.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/visit.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/visit.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/visit_check.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_check.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_check.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/visit_check.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/visit_eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/visit_eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/visit_free.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_free.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_free.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/visit_free.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/script/visit_to_str.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_to_str.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_to_str.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/script/visit_to_str.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/pipeline_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/pipeline_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/pipeline_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/pipeline_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/stats.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/stats.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/stats.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/stats.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/system_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/system_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/system_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/system_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/world_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/world_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/stats/world_summary.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_summary.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_summary.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/stats/world_summary.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/system/system.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/system/system.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/system/system.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/system/system.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/timer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/timer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/timer.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/timer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/addons/units.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/units.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/units.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/addons/units.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/bootstrap.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/bootstrap.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/bootstrap.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/bootstrap.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/bitset.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/bitset.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/bitset.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/bitset.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/block_allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/block_allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/block_allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/block_allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/hash.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hash.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hash.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/hash.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/hashmap.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hashmap.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hashmap.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/hashmap.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/map.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/map.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/map.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/map.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/name_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/name_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/name_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/name_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/sparse.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/sparse.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/sparse.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/sparse.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/stack_allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/stack_allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/stack_allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/stack_allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/strbuf.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/strbuf.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/strbuf.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/strbuf.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/switch_list.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/switch_list.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/switch_list.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/switch_list.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/datastructures/vec.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/vec.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/vec.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/datastructures/vec.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/each.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/each.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/each.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/each.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/entity.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/entity.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/entity_name.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity_name.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity_name.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/entity_name.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/id.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/id.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/id.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/id.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/misc.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/misc.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/misc.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/misc.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/observable.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observable.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observable.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/observable.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/observer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observer.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/observer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/os_api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/os_api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/os_api.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/os_api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/poly.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/poly.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/poly.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/poly.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/api.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/compiler/compiler.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/compiler/compiler.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/compiler/compiler_term.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler_term.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler_term.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/compiler/compiler_term.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/cache_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/cache_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/cache_order_by.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_order_by.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_order_by.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/cache_order_by.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/change_detection.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/change_detection.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/change_detection.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/change_detection.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_member.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_member.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_member.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_member.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_pred.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_pred.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_pred.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_pred.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_sparse.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_sparse.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_sparse.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_sparse.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_toggle.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_toggle.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_toggle.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_toggle.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_trav.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_trav.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_trav.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_trav.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_union.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_union.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_union.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_union.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_up.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_up.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_up.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_up.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/eval_utils.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_utils.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/eval_utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/trav_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/trav_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/trav_down_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_down_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_down_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/trav_down_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/trav_up_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_up_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_up_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/trav_up_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/engine/trivial_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trivial_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trivial_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/engine/trivial_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/util.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/util.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/util.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/util.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/query/validator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/validator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/validator.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/query/validator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/search.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/search.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/search.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/search.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/stage.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/stage.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/stage.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/stage.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/component_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/component_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/component_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/component_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/entity_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/entity_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/entity_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/entity_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/sparse_storage.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/sparse_storage.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/sparse_storage.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/sparse_storage.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/table.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/table.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/table_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/table_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/storage/table_graph.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_graph.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_graph.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/storage/table_graph.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/value.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_STATIC -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs_static.dir/src/world.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/world.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/world.c",
+  "output": "lib/flecs/CMakeFiles/flecs_static.dir/src/world.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/alerts.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/alerts.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/alerts.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/alerts.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/app.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/app.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/app.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/app.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/doc.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/doc.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/doc.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/doc.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/flecs_cpp.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/flecs_cpp.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/flecs_cpp.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/flecs_cpp.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/http.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/http.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/http.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/http.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/journal.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/journal.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/journal.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/journal.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/deserialize.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/deserialize.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/deserialize_value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize_value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/deserialize_value.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/deserialize_value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/json.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/json.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/json.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/json.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_entity.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_entity.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_entity.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_entity.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_field_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_field_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_field_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_field_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result_query.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_query.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_query.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result_query.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result_table.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_table.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_iter_result_table.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_iter_result_table.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_query_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_query_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_query_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_query_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_type_info.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_type_info.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_type_info.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_type_info.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_value.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/json/serialize_world.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_world.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/json/serialize_world.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/json/serialize_world.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/log.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/log.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/log.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/log.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/api.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/c_utils.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/c_utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/c_utils.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/c_utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/cursor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/cursor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/cursor.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/cursor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/definitions.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/definitions.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/definitions.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/definitions.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/meta.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/meta.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/meta.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/meta.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/rtt_lifecycle.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/rtt_lifecycle.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/rtt_lifecycle.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/rtt_lifecycle.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/meta/serialized.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/serialized.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/meta/serialized.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/meta/serialized.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/metrics.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/metrics.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/metrics.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/metrics.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/module.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/module.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/module.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/module.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/os_api_impl/os_api_impl.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/os_api_impl/os_api_impl.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/os_api_impl/os_api_impl.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/os_api_impl/os_api_impl.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/parser/tokenizer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/parser/tokenizer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/parser/tokenizer.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/parser/tokenizer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/pipeline/pipeline.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/pipeline.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/pipeline.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/pipeline/pipeline.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/pipeline/worker.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/worker.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/pipeline/worker.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/pipeline/worker.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/query_dsl/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/query_dsl/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/query_dsl/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/query_dsl/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/rest.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/rest.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/rest.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/rest.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/ast.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/ast.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/ast.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/ast.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/ast.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/ast.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/ast.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/ast.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/stack.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/stack.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/stack.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/stack.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/util.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/util.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/util.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/util.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/visit_eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/visit_eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/visit_fold.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_fold.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_fold.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/visit_fold.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/visit_free.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_free.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_free.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/visit_free.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/visit_to_str.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_to_str.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_to_str.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/visit_to_str.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/expr/visit_type.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_type.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/expr/visit_type.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/expr/visit_type.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/function.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/function.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/function.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/function.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/functions_builtin.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_builtin.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_builtin.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/functions_builtin.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/functions_math.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_math.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/functions_math.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/functions_math.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/parser.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/parser.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/parser.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/parser.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/script.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/script.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/script.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/script.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/serialize.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/serialize.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/serialize.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/serialize.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/template.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/template.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/template.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/template.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/vars.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/vars.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/vars.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/vars.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/visit.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/visit.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/visit_check.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_check.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_check.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/visit_check.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/visit_eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/visit_eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/visit_free.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_free.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_free.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/visit_free.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/script/visit_to_str.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_to_str.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/script/visit_to_str.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/script/visit_to_str.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/pipeline_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/pipeline_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/pipeline_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/pipeline_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/stats.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/stats.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/stats.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/stats.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/system_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/system_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/system_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/system_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/world_monitor.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_monitor.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_monitor.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/world_monitor.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/stats/world_summary.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_summary.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/stats/world_summary.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/stats/world_summary.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/system/system.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/system/system.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/system/system.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/system/system.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/timer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/timer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/timer.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/timer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/addons/units.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/units.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/addons/units.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/addons/units.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/bootstrap.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/bootstrap.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/bootstrap.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/bootstrap.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/bitset.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/bitset.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/bitset.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/bitset.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/block_allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/block_allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/block_allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/block_allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/hash.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hash.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hash.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/hash.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/hashmap.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hashmap.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/hashmap.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/hashmap.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/map.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/map.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/map.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/map.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/name_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/name_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/name_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/name_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/sparse.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/sparse.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/sparse.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/sparse.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/stack_allocator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/stack_allocator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/stack_allocator.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/stack_allocator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/strbuf.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/strbuf.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/strbuf.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/strbuf.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/switch_list.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/switch_list.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/switch_list.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/switch_list.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/datastructures/vec.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/vec.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/datastructures/vec.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/datastructures/vec.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/each.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/each.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/each.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/each.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/entity.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/entity.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/entity_name.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity_name.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/entity_name.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/entity_name.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/id.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/id.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/id.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/id.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/misc.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/misc.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/misc.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/misc.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/observable.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observable.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observable.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/observable.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/observer.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observer.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/observer.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/observer.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/os_api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/os_api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/os_api.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/os_api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/poly.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/poly.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/poly.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/poly.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/api.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/api.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/api.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/api.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/compiler/compiler.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/compiler/compiler.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/compiler/compiler_term.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler_term.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/compiler/compiler_term.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/compiler/compiler_term.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/cache_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/cache_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/cache_order_by.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_order_by.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/cache_order_by.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/cache_order_by.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/change_detection.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/change_detection.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/change_detection.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/change_detection.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_member.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_member.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_member.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_member.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_pred.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_pred.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_pred.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_pred.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_sparse.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_sparse.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_sparse.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_sparse.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_toggle.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_toggle.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_toggle.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_toggle.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_trav.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_trav.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_trav.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_trav.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_union.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_union.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_union.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_union.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_up.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_up.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_up.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_up.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/eval_utils.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_utils.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/eval_utils.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/eval_utils.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/trav_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/trav_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/trav_down_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_down_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_down_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/trav_down_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/trav_up_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_up_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trav_up_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/trav_up_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/engine/trivial_iter.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trivial_iter.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/engine/trivial_iter.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/engine/trivial_iter.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/util.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/util.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/util.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/util.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/query/validator.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/validator.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/query/validator.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/query/validator.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/search.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/search.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/search.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/search.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/stage.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/stage.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/stage.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/stage.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/component_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/component_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/component_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/component_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/entity_index.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/entity_index.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/entity_index.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/entity_index.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/sparse_storage.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/sparse_storage.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/sparse_storage.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/sparse_storage.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/table.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/table.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/table_cache.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_cache.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_cache.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/table_cache.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/storage/table_graph.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_graph.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/storage/table_graph.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/storage/table_graph.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/value.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/value.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/value.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/value.c.o"
+},
+{
+  "directory": "/Users/markinivan/Documents/Programming/c_game/build/lib/flecs",
+  "command": "/usr/bin/cc -Dflecs_EXPORTS -I/Users/markinivan/Documents/Programming/c_game/lib/flecs/include -std=gnu99 -arch arm64 -fPIC -fvisibility=hidden -o CMakeFiles/flecs.dir/src/world.c.o -c /Users/markinivan/Documents/Programming/c_game/lib/flecs/src/world.c",
+  "file": "/Users/markinivan/Documents/Programming/c_game/lib/flecs/src/world.c",
+  "output": "lib/flecs/CMakeFiles/flecs.dir/src/world.c.o"
+}
+]
