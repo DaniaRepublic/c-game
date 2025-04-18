@@ -1,0 +1,9 @@
+[submodule "lib/raylib"]
+	path = lib/raylib
+	url = https://github.com/raysan5/raylib.git
+[submodule "lib/box2d"]
+	path = lib/box2d
+	url = https://github.com/erincatto/box2d.git
+[submodule "lib/flecs"]
+	path = lib/flecs
+	url = https://github.com/SanderMertens/flecs.git
