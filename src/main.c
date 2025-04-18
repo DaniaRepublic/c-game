@@ -1,5 +1,5 @@
 /*
- *
+ * Da faq me makin'?
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,16 +16,17 @@
 #include "systems/onupdate.h"
 #include "systems/preupdate.h"
 
-float PHYS_TIME_STEP = 1.0f / 60.0f;
-
 int main() {
   // ------ Setup ------
   int screen_width = 600;
   int screen_height = 400;
 
   // Raylib
-  SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
   InitWindow(screen_width, screen_height, "Raylib + Flecs + Box2D");
+  SetConfigFlags(FLAG_WINDOW_HIGHDPI);
+
+  Vector2 dpi_factor = GetWindowScaleDPI();
 
   int curr_mon = GetCurrentMonitor();
   screen_width = GetMonitorWidth(curr_mon);
@@ -35,20 +36,21 @@ int main() {
   screen_height -= 65; // Reduce height because of the notch
 #endif                 /* ifdef __APPLE__ */
 
+  printf("monitor_height = %d\n", screen_height);
+  printf("screen_height = %d\n", GetScreenHeight());
+  printf("render_height = %d\n", GetRenderHeight());
+
   SetWindowSize(screen_width, screen_height);
   SetWindowPosition(0, 0);
-
-  Camera2D hero_cam;
-  hero_cam.target = Vector2Zero();
-  hero_cam.rotation = 0.0f;
-  hero_cam.zoom = 0.35f;
 
   // Flecs
   ecs_world_t *world = ecs_init();
 
   ECS_COMPONENT(world, InputsContext);
+  ECS_COMPONENT(world, AssetStore);
   ECS_COMPONENT(world, Position);
   ECS_COMPONENT(world, PhysicsBody);
+  ECS_COMPONENT(world, Drawable);
 
   ECS_TAG(world, TagControllable);
 
@@ -57,13 +59,44 @@ int main() {
              InputsContext($), TagControllable);
   ECS_SYSTEM(world, SyncPhysicsSystem, EcsOnUpdate, Position, PhysicsBody);
 
-  ecs_singleton_set(
-      world, InputsContext,
-      {0, {false, false, false, false, false, false}, Vector2Zero()});
+  ecs_singleton_set(world, InputsContext, {0});
+  ecs_singleton_set(world, AssetStore, {0});
+
+  AssetStore *asset_store = ecs_singleton_ensure(world, AssetStore);
+
+  // load ghost animation
+  freeSetTex(TEX_TILEMAP_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
+             asset_store);
+  freeSetTex(TEX_GHOST1, LoadTexture("assets/slime-ghost1.png"), asset_store);
+  freeSetTex(TEX_GHOST2, LoadTexture("assets/slime-ghost2.png"), asset_store);
+  freeSetTex(TEX_GHOST3, LoadTexture("assets/slime-ghost3.png"), asset_store);
+  freeSetTex(TEX_GHOST4, LoadTexture("assets/slime-ghost4.png"), asset_store);
+
+  Tilemap tm_concrete = {
+      .tex_choice = TEX_TILEMAP_CONCRETE,
+      .tile_w = 32,
+      .tile_h = 32,
+      .num_x = 3,
+      .num_y = 3,
+  };
+
+  Animation6 ghost_anim = {
+      .frames =
+          {
+              TEX_GHOST1,
+              TEX_GHOST2,
+              TEX_GHOST3,
+              TEX_GHOST4,
+          },
+      .curr_frame_idx = 0,
+      .total_frames = 4,
+      .frame_duration = 0.2,
+      .since_last_frame = 0,
+  };
 
   // Box2D
   b2WorldDef worldDef = b2DefaultWorldDef();
-  worldDef.gravity = (b2Vec2){0.0f, -20.0f};
+  worldDef.gravity = (b2Vec2){0};
   b2WorldId worldId = b2CreateWorld(&worldDef);
 
   b2BodyDef groundBodyDef = b2DefaultBodyDef();
@@ -88,17 +121,17 @@ int main() {
 
   // Create Flecs entity
   ecs_entity_t ent = ecs_new(world);
-  ecs_set(world, ent, Position, {0, 0});
+  ecs_set(world, ent, Position, {0});
   ecs_set(world, ent, PhysicsBody, {dynamicId});
   ecs_add(world, ent, TagControllable);
 
-  ecs_entity_t ent_arr[2000];
+  ecs_entity_t ent_arr[2500];
 
-  for (int i = 0; i < 200; ++i) {
-    for (int j = 0; j < 10; ++j) {
+  for (int i = 0; i < 50; ++i) {
+    for (int j = 0; j < 50; ++j) {
       b2BodyDef bodyDef2 = b2DefaultBodyDef();
       bodyDef2.type = b2_dynamicBody;
-      bodyDef2.position = (b2Vec2){-25 + 5.0f * (j + 1), 15.0f + 5.0f * i};
+      bodyDef2.position = (b2Vec2){-125 + 5.0f * (j + 1), 15.0f + 5.0f * i};
       bodyDef2.linearDamping = 0.05f;
       bodyDef2.angularDamping = 0.4f;
       b2BodyId dynamicId2 = b2CreateBody(worldId, &bodyDef2);
@@ -110,9 +143,14 @@ int main() {
       ecs_entity_t ent2 = ecs_new(world);
       ecs_set(world, ent2, Position, {100, 0});
       ecs_set(world, ent2, PhysicsBody, {dynamicId2});
-      ent_arr[j + i * 10] = ent2;
+      ent_arr[j + i * 50] = ent2;
     }
   }
+
+  Camera2D hero_cam;
+  hero_cam.target = Vector2Zero();
+  hero_cam.rotation = 0.0f;
+  hero_cam.zoom = 0.35f;
   // ------
 
   float time_acc = 0.0f;
@@ -123,28 +161,33 @@ int main() {
 
     setScreenDims(&screen_width, &screen_height);
 
-    // Step physics fixed time step at a time
-    if (time_acc >= PHYS_TIME_STEP) {
+    // Step physics one fixed time step at a time for accumulated #steps
+    while (time_acc >= PHYS_TIME_STEP) {
       b2World_Step(worldId, PHYS_TIME_STEP, 4);
       time_acc -= PHYS_TIME_STEP;
     }
+
+    // Progress animations
+    deltaTStepAnimation6(&ghost_anim, delta_t, asset_store);
 
     // Update ECS
     ecs_progress(world, delta_t);
 
     const Position *p = ecs_get(world, ent, Position);
     hero_cam.offset =
-        (Vector2){.x = (float)screen_width, .y = (float)screen_height};
+        (Vector2){.x = (float)screen_width / 2, .y = (float)screen_height / 2};
     hero_cam.target =
         (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
     // ------
     // ------ Draw ------
     BeginDrawing();
-    ClearBackground(DARKGRAY);
+    ClearBackground(LIGHTGRAY);
 
     BeginMode2D(hero_cam);
     DrawRectangle(-1500, 20, 3000, 200, GREEN);
-    DrawRectangle(p->x * 10 - 10, (p->y * 10 - 10) * -1, 20, 20, RED);
+    DrawTextureEx(getCurrFrameAnimation6(ghost_anim, asset_store),
+                  (Vector2){p->x * 10 - 10, (p->y * 10 - 10) * -1}, 0.0f, 2.0f,
+                  WHITE);
     for (int i = 0; i < sizeof(ent_arr) / sizeof(ecs_entity_t); ++i) {
       const Position *p2 = ecs_get(world, ent_arr[i], Position);
       const PhysicsBody *pb = ecs_get(world, ent_arr[i], PhysicsBody);
@@ -152,6 +195,21 @@ int main() {
                     b2Body_IsAwake(pb->body) ? BLUE : BLACK);
     }
     EndMode2D();
+
+    for (int i = 0; i < tm_concrete.num_x; ++i) {
+      for (int j = 0; j < tm_concrete.num_y; ++j) {
+        float offset_x = tm_concrete.tile_w * i;
+        float offset_y = tm_concrete.tile_h * j;
+        DrawTextureRec(asset_store->_textures[tm_concrete.tex_choice],
+                       (Rectangle){.x = offset_x,
+                                   .y = offset_y,
+                                   .width = tm_concrete.tile_w,
+                                   .height = tm_concrete.tile_h},
+                       (Vector2){.x = offset_x * 3 + offset_y,
+                                 .y = screen_height - tm_concrete.tile_h},
+                       WHITE);
+      }
+    }
 
     DrawFPS(20, 20);
     EndDrawing();
@@ -161,6 +219,7 @@ int main() {
   // ------ Cleanup ------
   ecs_fini(world);
   b2DestroyWorld(worldId);
+  freeAssetStore(asset_store);
   CloseWindow();
   return EXIT_SUCCESS;
   // ------

@@ -3,6 +3,7 @@
 #include "box2d/box2d.h"
 #include "box2d/math_functions.h"
 #include "flecs.h"
+#include "lib/config.h"
 #include "raylib.h"
 
 #include "components/mycomponents.h"
@@ -23,36 +24,46 @@ void ApplyControlsSystem(ecs_iter_t *it) {
   PhysicsBody *pb = ecs_field(it, PhysicsBody, 1);
   const InputsContext *ctx = ecs_field(it, InputsContext, 2);
 
-  // Define maximum speed
-  float maxSpeed = 30.0f; // Adjust as needed
+  float maxSpeed = 30.0f;
+  float dashExtra = 50.0f;
 
   for (int i = 0; i < it->count; i++) {
     b2BodyId body = pb[i].body;
     b2Vec2 linVel = b2Body_GetLinearVelocity(body);
 
-    // Determine target velocity based on input
-    float targetVelX = 0.0f;
+    b2Vec2 inputDir = b2Vec2_zero;
     if (ctx->kb_inputs.d) {
-      targetVelX = maxSpeed;
+      inputDir.x += 1;
     }
     if (ctx->kb_inputs.a) {
-      targetVelX = -maxSpeed;
+      inputDir.x -= 1;
+    }
+    if (ctx->kb_inputs.w) {
+      inputDir.y += 1;
+    }
+    if (ctx->kb_inputs.s) {
+      inputDir.y -= 1;
     }
 
-    // Calculate the impulse required to move from current velocity to target
-    // velocity. impulse = mass * (targetVel - currentVel)
-    float mass = b2Body_GetMass(body);
-    float impulseX = mass * (targetVelX - linVel.x);
+    if (b2Length(inputDir) > 1e-6) {
+      b2Vec2 normDir = b2Normalize(inputDir);
 
-    // Apply a horizontal impulse. Vertical impulses (like jump) should be
-    // handled separately.
-    if (b2AbsFloat(impulseX) > 0.001)
-      b2Body_ApplyLinearImpulseToCenter(body, (b2Vec2){.x = impulseX, .y = 0},
-                                        true);
+      float mass = b2Body_GetMass(body);
+      // Impulse = mass * acceleration * dt.
+      b2Vec2 accelImpulse = b2MulSV(mass * maxSpeed * PHYS_TIME_STEP, normDir);
 
-    // For jumping or other one-off vertical impulses:
-    if (ctx->kb_inputs.space)
-      b2Body_ApplyLinearImpulseToCenter(body, (b2Vec2){.x = 0, .y = 200.0},
-                                        true);
+      float currentSpeed = b2Length(linVel);
+      if (currentSpeed < maxSpeed) {
+        b2Body_ApplyLinearImpulseToCenter(body, accelImpulse, true);
+      } else {
+        if (b2Dot(linVel, normDir) < 0)
+          b2Body_ApplyLinearImpulseToCenter(body, accelImpulse, true);
+      }
+
+      if (ctx->kb_inputs.space) {
+        b2Vec2 dashImpulse = b2MulSV(mass * dashExtra, normDir);
+        b2Body_ApplyLinearImpulseToCenter(body, dashImpulse, true);
+      }
+    }
   }
 }

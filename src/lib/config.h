@@ -2,6 +2,8 @@
 
 #include <stdbool.h>
 
+const float PHYS_TIME_STEP;
+
 typedef struct {
   /// true if down
   bool w;

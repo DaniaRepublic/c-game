@@ -16,13 +16,16 @@ add_subdirectory(lib/box2d)
 add_subdirectory(lib/raylib)
 add_subdirectory(lib/flecs)
 
+file(GLOB LIB_SOURCES "src/lib/*.c")
+file(GLOB ENTITY_SOURCES "src/entities/*.c")
+file(GLOB SYSTEM_SOURCES "src/systems/*.c")
+
 # Your source files
 add_executable(RaylibBox2DFlecs
     src/main.c
-    src/lib/utils.c
-    src/systems/onstart.c
-    src/systems/preupdate.c
-    src/systems/onupdate.c
+    ${LIB_SOURCES}
+    ${ENTITY_SOURCES}
+    ${SYSTEM_SOURCES}
 )
 
 # Include paths

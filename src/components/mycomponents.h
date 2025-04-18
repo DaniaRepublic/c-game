@@ -5,6 +5,7 @@
 #include "raylib.h"
 
 #include "lib/config.h"
+#include "lib/utils.h"
 
 // Components
 typedef struct {
@@ -20,3 +21,8 @@ typedef struct {
 typedef struct {
   b2BodyId body;
 } PhysicsBody;
+
+typedef struct {
+  TextureChoice tex_choice;
+  Color tint;
+} Drawable;

@@ -1,6 +1,9 @@
-.PHONY: all build run clean
+.PHONY: all build leak run clean
 
 all: build run
+
+leak: build
+	leaks -q --atExit -- ./build/RaylibBox2DFlecs
 
 build:
 	cmake -S . -B build
