@@ -33,6 +33,7 @@ target_include_directories(RaylibBox2DFlecs PRIVATE
     src
     lib/box2d/include
     lib/raylib/src
+    lib/raygui/src
     lib/flecs/include
 )
 

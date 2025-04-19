@@ -11,10 +11,18 @@
 #include "raylib.h"
 #include "raymath.h"
 
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+
 #include "components/mycomponents.h"
 #include "lib/utils.h"
 #include "systems/onupdate.h"
 #include "systems/preupdate.h"
+
+// gui implementations
+#include "lib/gui/jungle.h"
+#define GUI_LAYOUT_JUNGLE_IMPLEMENTATION
+#include "lib/gui/gui_layout_jungle.h"
 
 int main() {
   // ------ Setup ------
@@ -22,11 +30,11 @@ int main() {
   int screen_height = 400;
 
   // Raylib
-  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
   InitWindow(screen_width, screen_height, "Raylib + Flecs + Box2D");
-  SetConfigFlags(FLAG_WINDOW_HIGHDPI);
 
   Vector2 dpi_factor = GetWindowScaleDPI();
+  printf("%f %f\n", dpi_factor.x, dpi_factor.y);
 
   int curr_mon = GetCurrentMonitor();
   screen_width = GetMonitorWidth(curr_mon);
@@ -42,6 +50,10 @@ int main() {
 
   SetWindowSize(screen_width, screen_height);
   SetWindowPosition(0, 0);
+
+  // Init GUI
+  GuiLoadStyleJungle();
+  GuiLayoutJungleState settings_state = InitGuiLayoutJungle();
 
   // Flecs
   ecs_world_t *world = ecs_init();
@@ -67,11 +79,22 @@ int main() {
   // load ghost animation
   freeSetTex(TEX_TILEMAP_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
              asset_store);
+  SetTextureFilter(asset_store->_textures[TEX_TILEMAP_CONCRETE],
+                   TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST1, LoadTexture("assets/slime-ghost1.png"), asset_store);
+  SetTextureFilter(asset_store->_textures[TEX_GHOST1], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST2, LoadTexture("assets/slime-ghost2.png"), asset_store);
+  SetTextureFilter(asset_store->_textures[TEX_GHOST2], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST3, LoadTexture("assets/slime-ghost3.png"), asset_store);
+  SetTextureFilter(asset_store->_textures[TEX_GHOST3], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST4, LoadTexture("assets/slime-ghost4.png"), asset_store);
+  SetTextureFilter(asset_store->_textures[TEX_GHOST4], TEXTURE_FILTER_POINT);
 
+  printf("tilemap dims: %d, %d\n",
+         asset_store->_textures[TEX_TILEMAP_CONCRETE].width,
+         asset_store->_textures[TEX_TILEMAP_CONCRETE].height);
+  printf("ghost dims: %d, %d\n", asset_store->_textures[TEX_GHOST1].width,
+         asset_store->_textures[TEX_GHOST1].height);
   Tilemap tm_concrete = {
       .tex_choice = TEX_TILEMAP_CONCRETE,
       .tile_w = 32,
@@ -150,7 +173,7 @@ int main() {
   Camera2D hero_cam;
   hero_cam.target = Vector2Zero();
   hero_cam.rotation = 0.0f;
-  hero_cam.zoom = 0.35f;
+  hero_cam.zoom = settings_state.Slider001Value;
   // ------
 
   float time_acc = 0.0f;
@@ -178,16 +201,25 @@ int main() {
         (Vector2){.x = (float)screen_width / 2, .y = (float)screen_height / 2};
     hero_cam.target =
         (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
+    hero_cam.zoom = settings_state.Slider001Value;
     // ------
     // ------ Draw ------
     BeginDrawing();
-    ClearBackground(LIGHTGRAY);
+    ClearBackground(settings_state.ColorPicker003Value);
 
     BeginMode2D(hero_cam);
     DrawRectangle(-1500, 20, 3000, 200, GREEN);
-    DrawTextureEx(getCurrFrameAnimation6(ghost_anim, asset_store),
-                  (Vector2){p->x * 10 - 10, (p->y * 10 - 10) * -1}, 0.0f, 2.0f,
-                  WHITE);
+    Texture ghost = getCurrFrameAnimation6(ghost_anim, asset_store);
+    DrawTexturePro(
+        ghost,
+        (Rectangle){
+            .x = 0, .y = 0, .width = ghost.width, .height = ghost.height},
+        (Rectangle){.x = (int)(p->x * 10 - 10),
+                    .y = (int)(p->y * 10 - 10) * -1,
+                    .width = ghost.width * 4,
+                    .height = ghost.height * 4},
+        (Vector2){.x = ghost.width * 2, .y = ghost.height * 2}, 0.0f, WHITE);
+
     for (int i = 0; i < sizeof(ent_arr) / sizeof(ecs_entity_t); ++i) {
       const Position *p2 = ecs_get(world, ent_arr[i], Position);
       const PhysicsBody *pb = ecs_get(world, ent_arr[i], PhysicsBody);
@@ -200,16 +232,29 @@ int main() {
       for (int j = 0; j < tm_concrete.num_y; ++j) {
         float offset_x = tm_concrete.tile_w * i;
         float offset_y = tm_concrete.tile_h * j;
-        DrawTextureRec(asset_store->_textures[tm_concrete.tex_choice],
-                       (Rectangle){.x = offset_x,
-                                   .y = offset_y,
-                                   .width = tm_concrete.tile_w,
-                                   .height = tm_concrete.tile_h},
-                       (Vector2){.x = offset_x * 3 + offset_y,
-                                 .y = screen_height - tm_concrete.tile_h},
-                       WHITE);
+        DrawTexturePro(asset_store->_textures[tm_concrete.tex_choice],
+                       (Rectangle){
+                           .x = offset_x,
+                           .y = offset_y,
+                           .width = tm_concrete.tile_w,
+                           .height = tm_concrete.tile_h,
+                       },
+                       (Rectangle){
+                           .x = (offset_x * tm_concrete.num_x + offset_y) * 2,
+                           .y = screen_height - tm_concrete.tile_h * 2,
+                           .width = tm_concrete.tile_w * 2,
+                           .height = tm_concrete.tile_h * 2,
+                       },
+                       (Vector2){
+                           .x = 0,
+                           .y = 0,
+                       },
+                       0.0f, WHITE);
       }
     }
+
+    // gui
+    GuiLayoutJungle(&settings_state);
 
     DrawFPS(20, 20);
     EndDrawing();

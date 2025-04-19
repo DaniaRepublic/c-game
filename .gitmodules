@@ -7,3 +7,6 @@
 [submodule "lib/flecs"]
 	path = lib/flecs
 	url = https://github.com/SanderMertens/flecs.git
+[submodule "lib/raygui"]
+	path = lib/raygui
+	url = https://github.com/raysan5/raygui.git
