@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(RaylibBox2DFlecs C)
+project(DaGame C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -21,7 +21,7 @@ file(GLOB ENTITY_SOURCES "src/entities/*.c")
 file(GLOB SYSTEM_SOURCES "src/systems/*.c")
 
 # Your source files
-add_executable(RaylibBox2DFlecs
+add_executable(DaGame
     src/main.c
     ${LIB_SOURCES}
     ${ENTITY_SOURCES}
@@ -29,7 +29,7 @@ add_executable(RaylibBox2DFlecs
 )
 
 # Include paths
-target_include_directories(RaylibBox2DFlecs PRIVATE
+target_include_directories(DaGame PRIVATE
     src
     lib/box2d/include
     lib/raylib/src
@@ -38,11 +38,11 @@ target_include_directories(RaylibBox2DFlecs PRIVATE
 )
 
 # Explicitly link static versions of libraries
-target_link_libraries(RaylibBox2DFlecs raylib flecs_static box2d)
+target_link_libraries(DaGame raylib flecs_static box2d)
 
 # Required libraries for Raylib on Linux
 if(UNIX AND NOT APPLE)
-    target_link_libraries(RaylibBox2DFlecs
+    target_link_libraries(DaGame
         PRIVATE
         m pthread dl rt X11
     )

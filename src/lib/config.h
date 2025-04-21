@@ -5,18 +5,22 @@
 const float PHYS_TIME_STEP;
 
 typedef struct {
-  /// true if down
+  // true if down
   bool w;
-  /// true if down
+  // true if down
   bool a;
-  /// true if down
+  // true if down
   bool s;
-  /// true if down
+  // true if down
   bool d;
-  /// true if down
+  // true if down
   bool l_shift;
-  /// true if pressed
+  // true if pressed
   bool e;
-  /// true if pressed
+  // true if pressed
   bool space;
+  // true if pressed
+  bool r_click;
+  // true if pressed
+  bool l_click;
 } KeyboardInputs;

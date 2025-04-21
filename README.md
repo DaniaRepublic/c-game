@@ -10,10 +10,15 @@ make
 ```
 
 ### Very general targets
-  - [x] Animation  |22:25-04:02+1d|
-  - [x] Tilemap    |04:30-05:40+1d|
-  - [x] GUI        |xx:xx-05:28+2d|
-  - [ ] Editor     |xx:xx-xx:xx|
+  - [x] Animation     |22:25-04:02+1d|
+  - [x] Tilemap view  |04:30-05:40+1d|
+  - [x] GUI           |xx:xx-05:28+2d|
+  - [ ] Editor        |07:01-xx:xx|
+    - [ ] Tilemap     |07:01-17:08+2d|
+  - [ ] Saving        |xx:xx-xx:xx|
+
+### Notes
+  - in the tile-picker create an eraser tile that removes tiles.
 
 ### Steam relevant stats
   - https://store.steampowered.com/hwsurvey/

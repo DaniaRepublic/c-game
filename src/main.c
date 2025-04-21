@@ -1,6 +1,4 @@
-/*
- * Da faq me makin'?
- */
+#include <_stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +8,7 @@
 #include "flecs/private/addons.h"
 #include "raylib.h"
 #include "raymath.h"
+#include "rlgl.h"
 
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
@@ -20,9 +19,8 @@
 #include "systems/preupdate.h"
 
 // gui implementations
-#include "lib/gui/jungle.h"
-#define GUI_LAYOUT_JUNGLE_IMPLEMENTATION
 #include "lib/gui/gui_layout_jungle.h"
+#include "lib/gui/jungle.h"
 
 int main() {
   // ------ Setup ------
@@ -31,7 +29,7 @@ int main() {
 
   // Raylib
   SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
-  InitWindow(screen_width, screen_height, "Raylib + Flecs + Box2D");
+  InitWindow(screen_width, screen_height, "Da Game");
 
   Vector2 dpi_factor = GetWindowScaleDPI();
   printf("%f %f\n", dpi_factor.x, dpi_factor.y);
@@ -51,9 +49,23 @@ int main() {
   SetWindowSize(screen_width, screen_height);
   SetWindowPosition(0, 0);
 
+  // Must be multiple of 2
+  int tex_scale = 2;
+
   // Init GUI
   GuiLoadStyleJungle();
   GuiLayoutJungleState settings_state = InitGuiLayoutJungle();
+
+  unsigned int tile_w = 32;
+  unsigned int tile_h = 32;
+  float outline_thickness = 2.0f;
+
+  Tilemap tilemap = {.num_tiles = 0};
+
+  TilePicker tp = {0};
+  tp.tile_w = tile_w;
+  tp.tile_h = tile_h;
+  Tile *selected_tile = NULL;
 
   // Flecs
   ecs_world_t *world = ecs_init();
@@ -77,31 +89,47 @@ int main() {
   AssetStore *asset_store = ecs_singleton_ensure(world, AssetStore);
 
   // load ghost animation
-  freeSetTex(TEX_TILEMAP_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
+  freeSetTex(TEX_TILESET_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
              asset_store);
-  SetTextureFilter(asset_store->_textures[TEX_TILEMAP_CONCRETE],
-                   TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST1, LoadTexture("assets/slime-ghost1.png"), asset_store);
-  SetTextureFilter(asset_store->_textures[TEX_GHOST1], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST2, LoadTexture("assets/slime-ghost2.png"), asset_store);
-  SetTextureFilter(asset_store->_textures[TEX_GHOST2], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST3, LoadTexture("assets/slime-ghost3.png"), asset_store);
-  SetTextureFilter(asset_store->_textures[TEX_GHOST3], TEXTURE_FILTER_POINT);
   freeSetTex(TEX_GHOST4, LoadTexture("assets/slime-ghost4.png"), asset_store);
-  SetTextureFilter(asset_store->_textures[TEX_GHOST4], TEXTURE_FILTER_POINT);
+  freeSetTex(__TEX_ERASER, LoadTexture("assets/tiny-trash-can32x32.png"),
+             asset_store);
 
-  printf("tilemap dims: %d, %d\n",
-         asset_store->_textures[TEX_TILEMAP_CONCRETE].width,
-         asset_store->_textures[TEX_TILEMAP_CONCRETE].height);
-  printf("ghost dims: %d, %d\n", asset_store->_textures[TEX_GHOST1].width,
-         asset_store->_textures[TEX_GHOST1].height);
-  Tilemap tm_concrete = {
-      .tex_choice = TEX_TILEMAP_CONCRETE,
-      .tile_w = 32,
-      .tile_h = 32,
+  Tileset ts_concrete = {
+      .tex_choice = TEX_TILESET_CONCRETE,
+      .tile_w = tile_w,
+      .tile_h = tile_h,
       .num_x = 3,
       .num_y = 3,
   };
+
+  // Fill TilePicker with tileset.
+  Tile eraser = {
+      .tex_choice = __TEX_ERASER,
+      .tile_w = tile_w,
+      .tile_h = tile_h,
+      .offset_x = 0,
+      .offset_y = 0,
+  };
+  addTileToTilePicker(eraser, &tp);
+
+  for (int i = 0; i < ts_concrete.num_x; ++i) {
+    for (int j = 0; j < ts_concrete.num_y; ++j) {
+      float offset_x = ts_concrete.tile_w * i + ts_concrete.tile_w;
+      float offset_y = ts_concrete.tile_h * j + ts_concrete.tile_h;
+      Tile tile = {
+          .tex_choice = ts_concrete.tex_choice,
+          .offset_x = offset_x,
+          .offset_y = offset_y,
+          .tile_w = ts_concrete.tile_w,
+          .tile_h = ts_concrete.tile_h,
+      };
+      addTileToTilePicker(tile, &tp);
+    }
+  }
 
   Animation6 ghost_anim = {
       .frames =
@@ -133,7 +161,7 @@ int main() {
   b2BodyDef bodyDef = b2DefaultBodyDef();
   bodyDef.type = b2_dynamicBody;
   bodyDef.position = (b2Vec2){0.0f, 10.0f};
-  bodyDef.linearDamping = 0.05f;
+  bodyDef.linearDamping = 1.0f;
   bodyDef.angularDamping = 0.4f;
   b2BodyId dynamicId = b2CreateBody(worldId, &bodyDef);
   b2Polygon dynamicBox = b2MakeBox(1.0f, 1.0f);
@@ -195,6 +223,7 @@ int main() {
 
     // Update ECS
     ecs_progress(world, delta_t);
+    const InputsContext *inputs_ctx = ecs_singleton_get(world, InputsContext);
 
     const Position *p = ecs_get(world, ent, Position);
     hero_cam.offset =
@@ -202,23 +231,149 @@ int main() {
     hero_cam.target =
         (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
     hero_cam.zoom = settings_state.Slider001Value;
+
+    Vector2 world_mouse_pos =
+        GetScreenToWorld2D(inputs_ctx->mouse_pos, hero_cam);
+
+    // handle tilepicker
+    for (int i = 0; i < NUM_TILEPICKER_ROWS; ++i) {
+      for (int j = 0; j < NUM_TILEPICKER_COLS; ++j) {
+        if (tp.has_tile[i][j]) {
+          Tile tile = tp.tiles[i][j];
+          if (CheckCollisionPointRec(
+                  inputs_ctx->mouse_pos,
+                  (Rectangle){
+                      .x = tile.pos_x * tex_scale,
+                      .y = screen_height -
+                           (tile.pos_y + tile.tile_h) * tex_scale,
+                      .width = tile.tile_w * tex_scale,
+                      .height = tile.tile_h * tex_scale,
+                  }) &&
+              inputs_ctx->kb_inputs.l_click) {
+            selected_tile = &tp.tiles[i][j];
+          }
+        }
+      }
+    }
+
+    // handle tile placement (tilemap)
+    if ((selected_tile != NULL) && inputs_ctx->kb_inputs.l_click &&
+        !CheckCollisionPointRec( // mouse not over tilepicker
+            inputs_ctx->mouse_pos,
+            (Rectangle){
+                .x = 0,
+                .y = screen_height - tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+                .width = tile_w * tex_scale * NUM_TILEPICKER_COLS,
+                .height = tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+            })) {
+      int dest_x =
+          (int)world_mouse_pos.x / (tile_w * tex_scale) * (tile_w * tex_scale);
+      int dest_y =
+          (int)world_mouse_pos.y / (tile_h * tex_scale) * (tile_h * tex_scale);
+      Tile tile = *selected_tile;
+      if (tile.tex_choice == __TEX_ERASER) {
+        for (int i = 0; i < tilemap.num_tiles; ++i) {
+          if ((tilemap.tiles[i].pos_x == dest_x) &&
+              (tilemap.tiles[i].pos_y == dest_y)) {
+            --tilemap.num_tiles;
+            tilemap.tiles[i] = tilemap.tiles[tilemap.num_tiles];
+          }
+        }
+      } else {
+        for (int i = 0; i < tilemap.num_tiles; ++i) {
+          // prevent tile placement if there's a tile there already
+          if ((tilemap.tiles[i].pos_x == dest_x) &&
+              (tilemap.tiles[i].pos_y == dest_y)) {
+            --tilemap.num_tiles;
+            tilemap.tiles[i] = tilemap.tiles[tilemap.num_tiles];
+            break;
+          }
+        }
+        // only can add tile if tilemap not full
+        if (tilemap.num_tiles < NUM_TILEMAP_TILES) {
+          tile.pos_x = dest_x;
+          tile.pos_y = dest_y;
+          tilemap.tiles[tilemap.num_tiles] = tile;
+          ++tilemap.num_tiles;
+        }
+      }
+    }
     // ------
     // ------ Draw ------
     BeginDrawing();
     ClearBackground(settings_state.ColorPicker003Value);
 
     BeginMode2D(hero_cam);
+    // Draw tiles here
+    for (int i = 0; i < tilemap.num_tiles; ++i) {
+      Tile tile = tilemap.tiles[i];
+      DrawTexturePro(getTex(tile.tex_choice, asset_store),
+                     (Rectangle){
+                         .x = tile.offset_x,
+                         .y = tile.offset_y,
+                         .width = tile.tile_w,
+                         .height = tile.tile_h,
+                     },
+                     (Rectangle){
+                         .x = tile.pos_x,
+                         .y = tile.pos_y,
+                         .width = tile.tile_w * tex_scale,
+                         .height = tile.tile_h * tex_scale,
+                     },
+                     (Vector2){
+                         .x = 0.0f,
+                         .y = 0.0f,
+                     },
+                     0.0f, WHITE);
+    }
+
+    if (selected_tile != NULL) {
+      Tile tile = *selected_tile;
+      int dest_x =
+          (int)world_mouse_pos.x / (tile_w * tex_scale) * (tile_w * tex_scale);
+      int dest_y =
+          (int)world_mouse_pos.y / (tile_h * tex_scale) * (tile_h * tex_scale);
+      DrawTexturePro(getTex(tile.tex_choice, asset_store),
+                     (Rectangle){
+                         .x = tile.offset_x,
+                         .y = tile.offset_y,
+                         .width = tile.tile_w,
+                         .height = tile.tile_h,
+                     },
+                     (Rectangle){
+                         .x = dest_x,
+                         .y = dest_y,
+                         .width = tile.tile_w * tex_scale,
+                         .height = tile.tile_h * tex_scale,
+                     },
+                     (Vector2){
+                         .x = 0.0f,
+                         .y = 0.0f,
+                     },
+                     0.0f, WHITE);
+    }
+
     DrawRectangle(-1500, 20, 3000, 200, GREEN);
+
     Texture ghost = getCurrFrameAnimation6(ghost_anim, asset_store);
-    DrawTexturePro(
-        ghost,
-        (Rectangle){
-            .x = 0, .y = 0, .width = ghost.width, .height = ghost.height},
-        (Rectangle){.x = (int)(p->x * 10 - 10),
-                    .y = (int)(p->y * 10 - 10) * -1,
-                    .width = ghost.width * 4,
-                    .height = ghost.height * 4},
-        (Vector2){.x = ghost.width * 2, .y = ghost.height * 2}, 0.0f, WHITE);
+    DrawTexturePro(ghost,
+                   (Rectangle){
+                       .x = 0,
+                       .y = 0,
+                       .width = ghost.width,
+                       .height = ghost.height,
+                   },
+                   (Rectangle){
+                       .x = (int)(p->x * 10 - 10),
+                       .y = (int)(p->y * 10 - 10) * -1,
+                       .width = ghost.width * tex_scale,
+                       .height = ghost.height * tex_scale,
+                   },
+                   (Vector2){
+                       .x = ghost.width * tex_scale / 2.0f,
+                       .y = ghost.height * tex_scale / 2.0f,
+                   },
+                   0.0f, WHITE);
 
     for (int i = 0; i < sizeof(ent_arr) / sizeof(ecs_entity_t); ++i) {
       const Position *p2 = ecs_get(world, ent_arr[i], Position);
@@ -226,30 +381,70 @@ int main() {
       DrawRectangle(p2->x * 10 - 10, (p2->y * 10 - 10) * -1, 20, 20,
                     b2Body_IsAwake(pb->body) ? BLUE : BLACK);
     }
+
+    // Draw grid lines
+    if (settings_state.CheckBoxEx006Checked) {
+      rlPushMatrix();
+      rlTranslatef(0, tile_w * tex_scale / 2.0f * 500, 0);
+      rlRotatef(90, 1, 0, 0);
+      DrawGrid(1000, tile_w * tex_scale);
+      rlPopMatrix();
+    }
+
     EndMode2D();
 
-    for (int i = 0; i < tm_concrete.num_x; ++i) {
-      for (int j = 0; j < tm_concrete.num_y; ++j) {
-        float offset_x = tm_concrete.tile_w * i;
-        float offset_y = tm_concrete.tile_h * j;
-        DrawTexturePro(asset_store->_textures[tm_concrete.tex_choice],
-                       (Rectangle){
-                           .x = offset_x,
-                           .y = offset_y,
-                           .width = tm_concrete.tile_w,
-                           .height = tm_concrete.tile_h,
-                       },
-                       (Rectangle){
-                           .x = (offset_x * tm_concrete.num_x + offset_y) * 2,
-                           .y = screen_height - tm_concrete.tile_h * 2,
-                           .width = tm_concrete.tile_w * 2,
-                           .height = tm_concrete.tile_h * 2,
-                       },
-                       (Vector2){
-                           .x = 0,
-                           .y = 0,
-                       },
-                       0.0f, WHITE);
+    // Draw tilepicker
+    DrawRectangleRec(
+        (Rectangle){
+            .x = 0,
+            .y = screen_height - tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+            .width = tile_w * tex_scale * NUM_TILEPICKER_COLS,
+            .height = tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+        },
+        LIGHTGRAY);
+
+    for (int i = 0; i < NUM_TILEPICKER_COLS; ++i) {
+      for (int j = 0; j < NUM_TILEPICKER_ROWS; ++j) {
+        // fill with bg color
+        DrawRectangleLinesEx(
+            (Rectangle){
+                .x = i * tile_w * tex_scale,
+                .y = screen_height - ((j + 1) * tile_h) * tex_scale,
+                .width =
+                    tile_w * tex_scale +
+                    (i == (NUM_TILEPICKER_ROWS - 1) ? 0 : outline_thickness),
+                .height =
+                    tile_h * tex_scale +
+                    (i == (NUM_TILEPICKER_COLS - 1) ? 0 : outline_thickness),
+            },
+            outline_thickness, BLACK);
+      }
+    }
+
+    for (int i = 0; i < NUM_TILEPICKER_ROWS; ++i) {
+      for (int j = 0; j < NUM_TILEPICKER_COLS; ++j) {
+        if (tp.has_tile[i][j]) {
+          Tile tile = tp.tiles[i][j];
+          DrawTexturePro(
+              getTex(tile.tex_choice, asset_store),
+              (Rectangle){
+                  .x = tile.offset_x,
+                  .y = tile.offset_y,
+                  .width = tile.tile_w,
+                  .height = tile.tile_h,
+              },
+              (Rectangle){
+                  .x = tile.pos_x * tex_scale,
+                  .y = screen_height - (tile.pos_y + tile.tile_h) * tex_scale,
+                  .width = tile.tile_w * tex_scale,
+                  .height = tile.tile_h * tex_scale,
+              },
+              (Vector2){
+                  .x = 0,
+                  .y = 0,
+              },
+              0.0f, WHITE);
+        }
       }
     }
 

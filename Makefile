@@ -3,14 +3,14 @@
 all: build run
 
 leak: build
-	leaks -q --atExit -- ./build/RaylibBox2DFlecs
+	leaks -q --atExit -- ./build/DaGame
 
 build:
 	cmake -S . -B build
 	cmake --build build
 
 run:
-	./build/RaylibBox2DFlecs
+	./build/DaGame
 
 clean:
 	rm -rf build
