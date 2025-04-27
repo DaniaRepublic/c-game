@@ -1,11 +1,17 @@
 #include <_stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "box2d/box2d.h"
+#include "box2d/id.h"
+#include "box2d/math_functions.h"
+#include "box2d/types.h"
 #include "flecs.h"
 #include "flecs/addons/flecs_c.h"
+#include "flecs/os_api.h"
 #include "flecs/private/addons.h"
+#include "lib/config.h"
 #include "raylib.h"
 #include "raymath.h"
 #include "rlgl.h"
@@ -13,17 +19,33 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
-#include "components/mycomponents.h"
+#include "components/components.h"
 #include "lib/utils.h"
-#include "systems/onupdate.h"
-#include "systems/preupdate.h"
+#include "modules/module.h"
 
-// gui implementations
-#include "lib/gui/gui_layout_jungle.h"
-#include "lib/gui/jungle.h"
+ECS_COMPONENT_DECLARE(Gravity);
+ECS_COMPONENT_DECLARE(Position);
+ECS_COMPONENT_DECLARE(BoxDimensions);
+ECS_COMPONENT_DECLARE(InputsContext);
+ECS_COMPONENT_DECLARE(AssetStore);
+ECS_COMPONENT_DECLARE(PhysicsBody);
+ECS_COMPONENT_DECLARE(PhysicsBodyShape);
+ECS_COMPONENT_DECLARE(PhysicsBodyId);
+
+ECS_TAG_DECLARE(TagControllable);
+ECS_TAG_DECLARE(TagStatic);
+ECS_TAG_DECLARE(TagCube);
 
 int main() {
-  // ------ Setup ------
+// ------------ Setup ------------
+#ifdef DEV_BUILD
+  printf("Building in development mode.\n");
+#elif defined(TARGET_BUILD)
+  printf("Building for target.\n");
+#else
+#error "Build type not specified"
+#endif
+
   int screen_width = 600;
   int screen_height = 400;
 
@@ -32,7 +54,6 @@ int main() {
   InitWindow(screen_width, screen_height, "Da Game");
 
   Vector2 dpi_factor = GetWindowScaleDPI();
-  printf("%f %f\n", dpi_factor.x, dpi_factor.y);
 
   int curr_mon = GetCurrentMonitor();
   screen_width = GetMonitorWidth(curr_mon);
@@ -42,19 +63,24 @@ int main() {
   screen_height -= 65; // Reduce height because of the notch
 #endif                 /* ifdef __APPLE__ */
 
-  printf("monitor_height = %d\n", screen_height);
-  printf("screen_height = %d\n", GetScreenHeight());
-  printf("render_height = %d\n", GetRenderHeight());
-
   SetWindowSize(screen_width, screen_height);
   SetWindowPosition(0, 0);
+  MaximizeWindow();
+  SetExitKey(KEY_ESCAPE);
+
+  // Init GUI style
+  GuiLoadStyleJungle();
+
+  // Load settings config
+  GuiLayoutJungleState settings_state = InitGuiLayoutJungle();
+  if (readSettingsFromFile(SETTINGS_FILE, &settings_state)) {
+    printf("Read settings from %s successfully.\n", SETTINGS_FILE);
+  } else {
+    printf("Failed to read settings from %s.\n", SETTINGS_FILE);
+  }
 
   // Must be multiple of 2
   int tex_scale = 2;
-
-  // Init GUI
-  GuiLoadStyleJungle();
-  GuiLayoutJungleState settings_state = InitGuiLayoutJungle();
 
   unsigned int tile_w = 32;
   unsigned int tile_h = 32;
@@ -69,22 +95,9 @@ int main() {
 
   // Flecs
   ecs_world_t *world = ecs_init();
-
-  ECS_COMPONENT(world, InputsContext);
-  ECS_COMPONENT(world, AssetStore);
-  ECS_COMPONENT(world, Position);
-  ECS_COMPONENT(world, PhysicsBody);
-  ECS_COMPONENT(world, Drawable);
-
-  ECS_TAG(world, TagControllable);
-
-  ECS_SYSTEM(world, UpdateInputsContextSystem, EcsOnLoad, InputsContext($));
-  ECS_SYSTEM(world, ApplyControlsSystem, EcsOnUpdate, Position, PhysicsBody,
-             InputsContext($), TagControllable);
-  ECS_SYSTEM(world, SyncPhysicsSystem, EcsOnUpdate, Position, PhysicsBody);
-
-  ecs_singleton_set(world, InputsContext, {0});
-  ecs_singleton_set(world, AssetStore, {0});
+  {
+    ECS_IMPORT(world, MainModule);
+  }
 
   AssetStore *asset_store = ecs_singleton_ensure(world, AssetStore);
 
@@ -145,56 +158,85 @@ int main() {
       .since_last_frame = 0,
   };
 
-  // Box2D
+  // Initialize Box2D
+  ecs_entity_t world_ent = ecs_new(world);
+  ecs_set(world, world_ent, Gravity, {.x = 0, .y = -10});
+  const Gravity *gravity = ecs_get(world, world_ent, Gravity);
+
   b2WorldDef worldDef = b2DefaultWorldDef();
-  worldDef.gravity = (b2Vec2){0};
+  worldDef.gravity = (b2Vec2){.x = gravity->x, .y = gravity->y};
   b2WorldId worldId = b2CreateWorld(&worldDef);
 
-  b2BodyDef groundBodyDef = b2DefaultBodyDef();
-  groundBodyDef.position = (b2Vec2){0.0f, -10.0f};
-  b2BodyId groundId = b2CreateBody(worldId, &groundBodyDef);
-  b2Polygon groundBox = b2MakeBox(150.0f, 10.0f);
-  b2ShapeDef groundShapeDef = b2DefaultShapeDef();
-  groundShapeDef.material.restitution = 0.2f;
-  b2CreatePolygonShape(groundId, &groundShapeDef, &groundBox);
+  ecs_entity_t ground_ent;
+  ecs_entity_t ent;
+  int n_cubes = 10;
+  int curr_cube = 0;
+  ecs_entity_t ent_arr[n_cubes];
 
-  b2BodyDef bodyDef = b2DefaultBodyDef();
-  bodyDef.type = b2_dynamicBody;
-  bodyDef.position = (b2Vec2){0.0f, 10.0f};
-  bodyDef.linearDamping = 1.0f;
-  bodyDef.angularDamping = 0.4f;
-  b2BodyId dynamicId = b2CreateBody(worldId, &bodyDef);
-  b2Polygon dynamicBox = b2MakeBox(1.0f, 1.0f);
-  b2ShapeDef shapeDef = b2DefaultShapeDef();
-  shapeDef.density = 1.0f;
-  shapeDef.material.restitution = 0.9f;
-  b2CreatePolygonShape(dynamicId, &shapeDef, &dynamicBox);
+  // Load save if available
+  if (ecs_world_from_json_file(world, "assets/save.json", NULL) != NULL) {
+    printf("Loading save...\n");
+    // Create box 2d
+    ecs_query_t *q =
+        ecs_query(world, {.terms = {{.id = ecs_id(Position)},
+                                    {.id = ecs_id(BoxDimensions)},
+                                    {.id = ecs_id(PhysicsBody)},
+                                    {.id = ecs_id(PhysicsBodyShape)}},
+                          .cache_kind = EcsQueryCacheNone});
+    ecs_iter_t it = ecs_query_iter(world, q);
+    while (ecs_query_next(&it)) {
+      for (int i = 0; i < it.count; ++i) {
+        ecs_entity_t q_ent = it.entities[i];
+        createPhysicalBoxForEntity(world, q_ent, worldId);
+        if (ecs_has(world, q_ent, TagControllable)) {
+          ent = q_ent;
+        }
+        if (ecs_has(world, q_ent, TagStatic)) {
+          ground_ent = q_ent;
+        }
+        if (ecs_has(world, q_ent, TagCube)) {
+          ent_arr[curr_cube] = q_ent;
+          ++curr_cube;
+        }
+      }
+    }
+  } else {
+    printf("Initializing new game.\n");
+    // define ground for ecs
+    ground_ent = createEntityWithPhysicalBox(
+        world, worldId, (Position){.x = 0, .y = 0},
+        (BoxDimensions){.x = 150.0f, .y = 10.0f},
+        (PhysicsBody){.body_type = b2_staticBody},
+        (PhysicsBodyShape){
+            .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.2f});
+    ecs_add(world, ground_ent, TagStatic);
 
-  // Create Flecs entity
-  ecs_entity_t ent = ecs_new(world);
-  ecs_set(world, ent, Position, {0});
-  ecs_set(world, ent, PhysicsBody, {dynamicId});
-  ecs_add(world, ent, TagControllable);
+    // b2BodyDef bodyDef = b2DefaultBodyDef();
+    // bodyDef.type = b2_dynamicBody;
+    // bodyDef.position = (b2Vec2){0.0f, 10.0f};
+    // bodyDef.linearDamping = 1.0f;
+    // bodyDef.angularDamping = 0.4f;
 
-  ecs_entity_t ent_arr[2500];
+    ent = createEntityWithPhysicalBox(
+        world, worldId, (Position){.x = 0, .y = 10},
+        (BoxDimensions){.x = 1.0f, .y = 1.0f},
+        (PhysicsBody){.body_type = b2_dynamicBody},
+        (PhysicsBodyShape){
+            .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
+    ecs_add(world, ent, TagControllable);
 
-  for (int i = 0; i < 50; ++i) {
-    for (int j = 0; j < 50; ++j) {
-      b2BodyDef bodyDef2 = b2DefaultBodyDef();
-      bodyDef2.type = b2_dynamicBody;
-      bodyDef2.position = (b2Vec2){-125 + 5.0f * (j + 1), 15.0f + 5.0f * i};
-      bodyDef2.linearDamping = 0.05f;
-      bodyDef2.angularDamping = 0.4f;
-      b2BodyId dynamicId2 = b2CreateBody(worldId, &bodyDef2);
-      b2Polygon dynamicBox2 = b2MakeBox(1.0f, 1.0f);
-      b2ShapeDef shapeDef2 = b2DefaultShapeDef();
-      shapeDef2.density = 1.0f;
-      shapeDef2.material.restitution = 0.9f;
-      b2CreatePolygonShape(dynamicId2, &shapeDef2, &dynamicBox2);
-      ecs_entity_t ent2 = ecs_new(world);
-      ecs_set(world, ent2, Position, {100, 0});
-      ecs_set(world, ent2, PhysicsBody, {dynamicId2});
-      ent_arr[j + i * 50] = ent2;
+    for (int i = 0; i < 5; ++i) {
+      for (int j = 0; j < 2; ++j) {
+        ecs_entity_t cube_ent = createEntityWithPhysicalBox(
+            world, worldId,
+            (Position){.x = 5.0f * (j + 1), .y = 15.0f + 5.0f * i},
+            (BoxDimensions){.x = 1.0f, .y = 1.0f},
+            (PhysicsBody){.body_type = b2_dynamicBody},
+            (PhysicsBodyShape){
+                .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
+        ecs_add(world, cube_ent, TagCube);
+        ent_arr[j + i * 2] = cube_ent;
+      }
     }
   }
 
@@ -202,11 +244,11 @@ int main() {
   hero_cam.target = Vector2Zero();
   hero_cam.rotation = 0.0f;
   hero_cam.zoom = settings_state.Slider001Value;
-  // ------
 
   float time_acc = 0.0f;
+  // ------------------------
   while (!WindowShouldClose()) {
-    // ------ Update ------
+    // ------------ Update ------------
     float delta_t = GetFrameTime();
     time_acc += delta_t;
 
@@ -232,8 +274,9 @@ int main() {
         (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
     hero_cam.zoom = settings_state.Slider001Value;
 
-    Vector2 world_mouse_pos =
-        GetScreenToWorld2D(inputs_ctx->mouse_pos, hero_cam);
+    Vector2 world_mouse_pos = GetScreenToWorld2D(
+        (Vector2){.x = inputs_ctx->mouse_pos.x, .y = inputs_ctx->mouse_pos.y},
+        hero_cam);
 
     // handle tilepicker
     for (int i = 0; i < NUM_TILEPICKER_ROWS; ++i) {
@@ -241,7 +284,8 @@ int main() {
         if (tp.has_tile[i][j]) {
           Tile tile = tp.tiles[i][j];
           if (CheckCollisionPointRec(
-                  inputs_ctx->mouse_pos,
+                  (Vector2){.x = inputs_ctx->mouse_pos.x,
+                            .y = inputs_ctx->mouse_pos.y},
                   (Rectangle){
                       .x = tile.pos_x * tex_scale,
                       .y = screen_height -
@@ -259,7 +303,8 @@ int main() {
     // handle tile placement (tilemap)
     if ((selected_tile != NULL) && inputs_ctx->kb_inputs.l_click &&
         !CheckCollisionPointRec( // mouse not over tilepicker
-            inputs_ctx->mouse_pos,
+            (Vector2){.x = inputs_ctx->mouse_pos.x,
+                      .y = inputs_ctx->mouse_pos.y},
             (Rectangle){
                 .x = 0,
                 .y = screen_height - tile_h * tex_scale * NUM_TILEPICKER_ROWS,
@@ -271,7 +316,9 @@ int main() {
       int dest_y =
           (int)world_mouse_pos.y / (tile_h * tex_scale) * (tile_h * tex_scale);
       Tile tile = *selected_tile;
+      // hadle eraser tool first
       if (tile.tex_choice == __TEX_ERASER) {
+        // if placing on another tile, remove it
         for (int i = 0; i < tilemap.num_tiles; ++i) {
           if ((tilemap.tiles[i].pos_x == dest_x) &&
               (tilemap.tiles[i].pos_y == dest_y)) {
@@ -280,8 +327,8 @@ int main() {
           }
         }
       } else {
+        // if placing on another tile, remove it
         for (int i = 0; i < tilemap.num_tiles; ++i) {
-          // prevent tile placement if there's a tile there already
           if ((tilemap.tiles[i].pos_x == dest_x) &&
               (tilemap.tiles[i].pos_y == dest_y)) {
             --tilemap.num_tiles;
@@ -298,8 +345,8 @@ int main() {
         }
       }
     }
-    // ------
-    // ------ Draw ------
+    // ------------------------
+    // ------------ Draw ------------
     BeginDrawing();
     ClearBackground(settings_state.ColorPicker003Value);
 
@@ -355,6 +402,13 @@ int main() {
 
     DrawRectangle(-1500, 20, 3000, 200, GREEN);
 
+    for (int i = 0; i < 10; ++i) {
+      const Position *p = ecs_get(world, ent_arr[i], Position);
+      const PhysicsBodyId *pb = ecs_get(world, ent_arr[i], PhysicsBodyId);
+      DrawRectangle(p->x * 10 - 10, (p->y * 10 - 10) * -1, 20, 20,
+                    b2Body_IsAwake(pb->body_id) ? BLUE : BLACK);
+    }
+
     Texture ghost = getCurrFrameAnimation6(ghost_anim, asset_store);
     DrawTexturePro(ghost,
                    (Rectangle){
@@ -375,13 +429,6 @@ int main() {
                    },
                    0.0f, WHITE);
 
-    for (int i = 0; i < sizeof(ent_arr) / sizeof(ecs_entity_t); ++i) {
-      const Position *p2 = ecs_get(world, ent_arr[i], Position);
-      const PhysicsBody *pb = ecs_get(world, ent_arr[i], PhysicsBody);
-      DrawRectangle(p2->x * 10 - 10, (p2->y * 10 - 10) * -1, 20, 20,
-                    b2Body_IsAwake(pb->body) ? BLUE : BLACK);
-    }
-
     // Draw grid lines
     if (settings_state.CheckBoxEx006Checked) {
       rlPushMatrix();
@@ -401,7 +448,7 @@ int main() {
             .width = tile_w * tex_scale * NUM_TILEPICKER_COLS,
             .height = tile_h * tex_scale * NUM_TILEPICKER_ROWS,
         },
-        LIGHTGRAY);
+        YELLOW);
 
     for (int i = 0; i < NUM_TILEPICKER_COLS; ++i) {
       for (int j = 0; j < NUM_TILEPICKER_ROWS; ++j) {
@@ -410,12 +457,8 @@ int main() {
             (Rectangle){
                 .x = i * tile_w * tex_scale,
                 .y = screen_height - ((j + 1) * tile_h) * tex_scale,
-                .width =
-                    tile_w * tex_scale +
-                    (i == (NUM_TILEPICKER_ROWS - 1) ? 0 : outline_thickness),
-                .height =
-                    tile_h * tex_scale +
-                    (i == (NUM_TILEPICKER_COLS - 1) ? 0 : outline_thickness),
+                .width = tile_w * tex_scale + outline_thickness,
+                .height = tile_h * tex_scale + outline_thickness,
             },
             outline_thickness, BLACK);
       }
@@ -453,14 +496,33 @@ int main() {
 
     DrawFPS(20, 20);
     EndDrawing();
-    // ------
+    // ------------------------
   }
 
-  // ------ Cleanup ------
+  // Save game
+  char *json = ecs_world_to_json(world, NULL);
+  FILE *save_file_w = fopen("assets/save.json", "w");
+  if (save_file_w == NULL) {
+    printf("Couldn't open file for saving.\n");
+  } else {
+    fwrite(json, strlen(json), 1, save_file_w);
+    printf("Saved successfully.\n");
+  }
+  fclose(save_file_w);
+  ecs_os_free(json);
+
+  // Save settings
+  if (writeSettingsToFile(SETTINGS_FILE, &settings_state)) {
+    printf("Saved settings in %s successfully.\n", SETTINGS_FILE);
+  } else {
+    printf("Failed to save settings in %s.\n", SETTINGS_FILE);
+  }
+
+  // ------------ Cleanup ------------
   ecs_fini(world);
   b2DestroyWorld(worldId);
   freeAssetStore(asset_store);
   CloseWindow();
   return EXIT_SUCCESS;
-  // ------
+  // ------------------------
 }

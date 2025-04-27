@@ -6,29 +6,29 @@
 #include "lib/config.h"
 #include "raylib.h"
 
-#include "components/mycomponents.h"
+#include "components/components.h"
 #include "onupdate.h"
 
 void SyncPhysicsSystem(ecs_iter_t *it) {
   Position *p = ecs_field(it, Position, 0);
-  PhysicsBody *pb = ecs_field(it, PhysicsBody, 1);
+  PhysicsBodyId *pb = ecs_field(it, PhysicsBodyId, 1);
 
   for (int i = 0; i < it->count; i++) {
-    b2Transform transform = b2Body_GetTransform(pb[i].body);
+    b2Transform transform = b2Body_GetTransform(pb[i].body_id);
     p[i].x = transform.p.x;
     p[i].y = transform.p.y;
   }
 }
 
 void ApplyControlsSystem(ecs_iter_t *it) {
-  PhysicsBody *pb = ecs_field(it, PhysicsBody, 1);
+  PhysicsBodyId *pb = ecs_field(it, PhysicsBodyId, 1);
   const InputsContext *ctx = ecs_field(it, InputsContext, 2);
 
   float maxSpeed = 30.0f;
   float dashExtra = 50.0f;
 
   for (int i = 0; i < it->count; i++) {
-    b2BodyId body = pb[i].body;
+    b2BodyId body = pb[i].body_id;
     b2Vec2 linVel = b2Body_GetLinearVelocity(body);
 
     b2Vec2 inputDir = b2Vec2_zero;

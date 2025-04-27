@@ -1,17 +1,126 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "lib/ini.h"
 #include "raylib.h"
 
 #include "utils.h"
+
+/*  Example settings.ini:
+ *
+ *  [settings]
+ *  WindowBox000Active = 1
+ *  Slider001Value = 0.80
+ *  ColorPicker003Value = { 200, 200, 200, 255 }
+ *  CheckBoxEx006Checked = 0
+ */
+static int settingsParser(void *user, const char *section, const char *name,
+                          const char *value) {
+  GuiLayoutJungleState *settings = (GuiLayoutJungleState *)user;
+
+#define MATCH(s, n) strcmp(section, s) == 0 && strcmp(name, n) == 0
+  if (MATCH("settings", "WindowBox000Active")) {
+    settings->WindowBox000Active = atoi(value) == 1;
+  } else if (MATCH("settings", "Slider001Value")) {
+    settings->Slider001Value = atof(value);
+  } else if (MATCH("settings", "CheckBoxEx006Checked")) {
+    settings->CheckBoxEx006Checked = atoi(value) == 1;
+  } else if (MATCH("settings", "ColorPicker003Value")) {
+    short val_pos = 0;
+    char val[5];
+    short part = 0;
+    for (int i = 0; i < strlen(value); ++i) {
+      char curr_char = value[i];
+      switch (curr_char) {
+      case '{': {
+        break;
+      }
+      case '}': {
+        break;
+      }
+      case ' ': {
+        break;
+      }
+      case ',': {
+        val[val_pos] = '\0';
+        val_pos = 0;
+        int ival = atoi(val);
+        switch (part) {
+        case 0: {
+          settings->ColorPicker003Value.r = ival;
+        }
+        case 1: {
+          settings->ColorPicker003Value.g = ival;
+        }
+        case 2: {
+          settings->ColorPicker003Value.b = ival;
+        }
+        case 3: {
+          settings->ColorPicker003Value.a = ival;
+        }
+        }
+        ++part;
+        break;
+      }
+      default: {
+        val[val_pos] = curr_char;
+        ++val_pos;
+      }
+      }
+    }
+  }
+
+  return 1;
+}
+
+bool readSettingsFromFile(const char *filename, GuiLayoutJungleState *state) {
+  int res = ini_parse(filename, settingsParser, state);
+  if (res != 0) {
+    switch (res) {
+    case -1: {
+      perror("Couldn't open settings.ini\n");
+      break;
+    }
+    case -2: {
+      perror("Memory alloc error reading settings.ini\n");
+      break;
+    }
+    default: {
+      printf("Error parsing settings.ini on line %d\n", res);
+    }
+    }
+    printf("Using default settings\n");
+    return false;
+  }
+
+  return true;
+}
+
+bool writeSettingsToFile(const char *filename,
+                         const GuiLayoutJungleState *state) {
+  FILE *file = fopen(filename, "w");
+  if (!file) {
+    return false;
+  }
+
+  fprintf(file, "[settings]\n");
+  fprintf(file, "WindowBox000Active = %d\n", state->WindowBox000Active ? 1 : 0);
+  fprintf(file, "Slider001Value = %.2f\n", state->Slider001Value);
+  fprintf(file, "ColorPicker003Value = { %d, %d, %d, %d }\n",
+          state->ColorPicker003Value.r, state->ColorPicker003Value.g,
+          state->ColorPicker003Value.b, state->ColorPicker003Value.a);
+  fprintf(file, "CheckBoxEx006Checked = %d\n",
+          state->CheckBoxEx006Checked ? 1 : 0);
+
+  fclose(file);
+  return true;
+}
 
 // Window state management.
 void setScreenDims(int *w, int *h) {
   *w = GetRenderWidth();
   *h = GetRenderHeight();
 }
-
-// Graphics
 
 int getTextureChoiceSeq(TextureChoice choice) {
   if ((choice > _TEX_ENTITIES_START) && (choice < _TEX_ENTITIES_END)) {

@@ -5,13 +5,14 @@
 #include "flecs/addons/flecs_c.h"
 #include "raylib.h"
 
-#include "components/mycomponents.h"
-#include "preupdate.h"
+#include "components/components.h"
+#include "onload.h"
 
 void UpdateInputsContextSystem(ecs_iter_t *it) {
   InputsContext new_ctx;
-  new_ctx.delta_t = GetFrameTime();
-  new_ctx.mouse_pos = GetMousePosition();
+  new_ctx.delta_t = it->delta_time;
+  Vector2 mouse_pos = GetMousePosition();
+  new_ctx.mouse_pos = (Vec2){.x = mouse_pos.x, .y = mouse_pos.y};
   new_ctx.kb_inputs = (KeyboardInputs){
       .w = IsKeyDown(KEY_W),
       .a = IsKeyDown(KEY_A),

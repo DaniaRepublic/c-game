@@ -2,6 +2,16 @@
 
 #include "raylib.h"
 
+// gui implementations
+#include "lib/gui/gui_layout_jungle.h"
+#include "lib/gui/jungle.h"
+
+static int settingsParser(void *user, const char *section, const char *name,
+                          const char *value);
+bool readSettingsFromFile(const char *filename, GuiLayoutJungleState *state);
+bool writeSettingsToFile(const char *filename,
+                         const GuiLayoutJungleState *state);
+
 void setScreenDims(int *w, int *h);
 
 typedef enum {
@@ -82,7 +92,7 @@ typedef struct {
 
 bool addTileToTilePicker(Tile, TilePicker *);
 
-#define NUM_TILEMAP_TILES 4
+#define NUM_TILEMAP_TILES 128
 
 typedef struct {
   Tile tiles[NUM_TILEMAP_TILES];

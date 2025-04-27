@@ -2,25 +2,6 @@
 
 #include <stdbool.h>
 
-const float PHYS_TIME_STEP;
+const char *SETTINGS_FILE;
 
-typedef struct {
-  // true if down
-  bool w;
-  // true if down
-  bool a;
-  // true if down
-  bool s;
-  // true if down
-  bool d;
-  // true if down
-  bool l_shift;
-  // true if pressed
-  bool e;
-  // true if pressed
-  bool space;
-  // true if pressed
-  bool r_click;
-  // true if pressed
-  bool l_click;
-} KeyboardInputs;
+const float PHYS_TIME_STEP;

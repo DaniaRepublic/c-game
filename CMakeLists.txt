@@ -16,17 +16,10 @@ add_subdirectory(lib/box2d)
 add_subdirectory(lib/raylib)
 add_subdirectory(lib/flecs)
 
-file(GLOB LIB_SOURCES "src/lib/*.c")
-file(GLOB ENTITY_SOURCES "src/entities/*.c")
-file(GLOB SYSTEM_SOURCES "src/systems/*.c")
+file(GLOB_RECURSE SRC "src/*.c")
 
-# Your source files
-add_executable(DaGame
-    src/main.c
-    ${LIB_SOURCES}
-    ${ENTITY_SOURCES}
-    ${SYSTEM_SOURCES}
-)
+# Source files
+add_executable(DaGame ${SRC})
 
 # Include paths
 target_include_directories(DaGame PRIVATE
@@ -40,10 +33,3 @@ target_include_directories(DaGame PRIVATE
 # Explicitly link static versions of libraries
 target_link_libraries(DaGame raylib flecs_static box2d)
 
-# Required libraries for Raylib on Linux
-if(UNIX AND NOT APPLE)
-    target_link_libraries(DaGame
-        PRIVATE
-        m pthread dl rt X11
-    )
-endif()

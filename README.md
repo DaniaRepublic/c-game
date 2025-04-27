@@ -12,13 +12,15 @@ make
 ### Very general targets
   - [x] Animation     |22:25-04:02+1d|
   - [x] Tilemap view  |04:30-05:40+1d|
-  - [x] GUI           |xx:xx-05:28+2d|
+  - [x] GUI           |??:??-05:28+2d|
   - [ ] Editor        |07:01-xx:xx|
-    - [ ] Tilemap     |07:01-17:08+2d|
-  - [ ] Saving        |xx:xx-xx:xx|
+    - [x] Tilemap     |07:01-17:08+2d|
+  - [x] Saving        |??:??-02:00+1w|
+  - [ ] Shaders       |xx:xx-xx:xx|
 
 ### Notes
-  - in the tile-picker create an eraser tile that removes tiles.
+Refactor code put ALL data in components.
+Editor needs entity picker. Also adding physics to editor entities.
 
 ### Steam relevant stats
   - https://store.steampowered.com/hwsurvey/
