@@ -3,3 +3,4 @@
 .cache/
 build-target/
 build-dev/
+compile_commands.json
