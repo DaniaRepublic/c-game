@@ -27,10 +27,15 @@ ECS_COMPONENT_DECLARE(Gravity);
 ECS_COMPONENT_DECLARE(Position);
 ECS_COMPONENT_DECLARE(BoxDimensions);
 ECS_COMPONENT_DECLARE(InputsContext);
+ECS_COMPONENT_DECLARE(GuiLayoutJungleState);
+ECS_COMPONENT_DECLARE(ScreenDims);
 ECS_COMPONENT_DECLARE(AssetStore);
 ECS_COMPONENT_DECLARE(PhysicsBody);
 ECS_COMPONENT_DECLARE(PhysicsBodyShape);
 ECS_COMPONENT_DECLARE(PhysicsBodyId);
+ECS_COMPONENT_DECLARE(Animation);
+ECS_COMPONENT_DECLARE(TextureConfig);
+ECS_COMPONENT_DECLARE(PlayerCamera);
 
 ECS_TAG_DECLARE(TagControllable);
 ECS_TAG_DECLARE(TagStatic);
@@ -46,52 +51,25 @@ int main() {
 #error "Build type not specified"
 #endif
 
-  int screen_width = 600;
-  int screen_height = 400;
-
+  ScreenDims init_screen_dims = {.x = 600, .y = 400};
   // Raylib
   SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
-  InitWindow(screen_width, screen_height, "Da Game");
+  InitWindow(init_screen_dims.x, init_screen_dims.y, "Da Game");
 
   Vector2 dpi_factor = GetWindowScaleDPI();
 
   int curr_mon = GetCurrentMonitor();
-  screen_width = GetMonitorWidth(curr_mon);
-  screen_height = GetMonitorHeight(curr_mon);
+  init_screen_dims.x = GetMonitorWidth(curr_mon);
+  init_screen_dims.y = GetMonitorHeight(curr_mon);
 
 #ifdef __APPLE__
-  screen_height -= 65; // Reduce height because of the notch
-#endif                 /* ifdef __APPLE__ */
+  init_screen_dims.y -= 65; // Reduce height because of the notch
+#endif                      /* ifdef __APPLE__ */
 
-  SetWindowSize(screen_width, screen_height);
+  SetWindowSize(init_screen_dims.x, init_screen_dims.y);
   SetWindowPosition(0, 0);
   MaximizeWindow();
   SetExitKey(KEY_ESCAPE);
-
-  // Init GUI style
-  GuiLoadStyleJungle();
-
-  // Load settings config
-  GuiLayoutJungleState settings_state = InitGuiLayoutJungle();
-  if (readSettingsFromFile(SETTINGS_FILE, &settings_state)) {
-    printf("Read settings from %s successfully.\n", SETTINGS_FILE);
-  } else {
-    printf("Failed to read settings from %s.\n", SETTINGS_FILE);
-  }
-
-  // Must be multiple of 2
-  int tex_scale = 2;
-
-  unsigned int tile_w = 32;
-  unsigned int tile_h = 32;
-  float outline_thickness = 2.0f;
-
-  Tilemap tilemap = {.num_tiles = 0};
-
-  TilePicker tp = {0};
-  tp.tile_w = tile_w;
-  tp.tile_h = tile_h;
-  Tile *selected_tile = NULL;
 
   // Flecs
   ecs_world_t *world = ecs_init();
@@ -99,7 +77,17 @@ int main() {
     ECS_IMPORT(world, MainModule);
   }
 
+  ScreenDims *screen_dims = ecs_singleton_ensure(world, ScreenDims);
+  screen_dims->x = init_screen_dims.x;
+  screen_dims->y = init_screen_dims.y;
   AssetStore *asset_store = ecs_singleton_ensure(world, AssetStore);
+  TextureConfig *tex_conf = ecs_singleton_ensure(world, TextureConfig);
+  // Must be multiple of 1
+  tex_conf->scale = 2;
+  tex_conf->tile_w = 32;
+  tex_conf->tile_h = 32;
+  GuiLayoutJungleState *settings_state =
+      ecs_singleton_ensure(world, GuiLayoutJungleState);
 
   // load ghost animation
   freeSetTex(TEX_TILESET_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
@@ -111,10 +99,30 @@ int main() {
   freeSetTex(__TEX_ERASER, LoadTexture("assets/tiny-trash-can32x32.png"),
              asset_store);
 
+  // Init GUI style
+  GuiLoadStyleJungle();
+
+  // Load settings config
+  *settings_state = InitGuiLayoutJungle();
+  if (readSettingsFromFile(SETTINGS_FILE, settings_state)) {
+    printf("Read settings from %s successfully.\n", SETTINGS_FILE);
+  } else {
+    printf("Failed to read settings from %s.\n", SETTINGS_FILE);
+  }
+
+  float outline_thickness = 2.0f;
+
+  Tilemap tilemap = {.num_tiles = 0};
+
+  TilePicker tp = {0};
+  tp.tile_w = tex_conf->tile_w;
+  tp.tile_h = tex_conf->tile_h;
+  Tile *selected_tile = NULL;
+
   Tileset ts_concrete = {
       .tex_choice = TEX_TILESET_CONCRETE,
-      .tile_w = tile_w,
-      .tile_h = tile_h,
+      .tile_w = tex_conf->tile_w,
+      .tile_h = tex_conf->tile_h,
       .num_x = 3,
       .num_y = 3,
   };
@@ -122,8 +130,8 @@ int main() {
   // Fill TilePicker with tileset.
   Tile eraser = {
       .tex_choice = __TEX_ERASER,
-      .tile_w = tile_w,
-      .tile_h = tile_h,
+      .tile_w = tex_conf->tile_w,
+      .tile_h = tex_conf->tile_h,
       .offset_x = 0,
       .offset_y = 0,
   };
@@ -143,20 +151,6 @@ int main() {
       addTileToTilePicker(tile, &tp);
     }
   }
-
-  Animation6 ghost_anim = {
-      .frames =
-          {
-              TEX_GHOST1,
-              TEX_GHOST2,
-              TEX_GHOST3,
-              TEX_GHOST4,
-          },
-      .curr_frame_idx = 0,
-      .total_frames = 4,
-      .frame_duration = 0.2,
-      .since_last_frame = 0,
-  };
 
   // Initialize Box2D
   ecs_entity_t world_ent = ecs_new(world);
@@ -204,8 +198,8 @@ int main() {
     printf("Initializing new game.\n");
     // define ground for ecs
     ground_ent = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = 0},
-        (BoxDimensions){.x = 150.0f, .y = 10.0f},
+        world, worldId, (Position){.x = 0, .y = -10},
+        (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 150.0f, .y = 10.0f},
         (PhysicsBody){.body_type = b2_staticBody},
         (PhysicsBodyShape){
             .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.2f});
@@ -218,19 +212,35 @@ int main() {
     // bodyDef.angularDamping = 0.4f;
 
     ent = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = 10},
+        world, worldId, (Position){.x = 0, .y = 10}, (Velocity){.x = 0, .y = 0},
         (BoxDimensions){.x = 1.0f, .y = 1.0f},
         (PhysicsBody){.body_type = b2_dynamicBody},
         (PhysicsBodyShape){
             .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
     ecs_add(world, ent, TagControllable);
+    ecs_set_id(world, ent, ecs_id(PlayerCamera), sizeof(PlayerCamera),
+               &(PlayerCamera){.zoom = settings_state->Slider001Value,
+                               .rotation = 0,
+                               .target = Vector2Zero()});
+    ecs_set_id(world, ent, ecs_id(Animation), sizeof(Animation),
+               &(Animation){.frames =
+                                {
+                                    TEX_GHOST1,
+                                    TEX_GHOST2,
+                                    TEX_GHOST3,
+                                    TEX_GHOST4,
+                                },
+                            .curr_frame_idx = 0,
+                            .total_frames = 4,
+                            .frame_duration = 0.2,
+                            .since_last_frame = 0});
 
     for (int i = 0; i < 5; ++i) {
       for (int j = 0; j < 2; ++j) {
         ecs_entity_t cube_ent = createEntityWithPhysicalBox(
             world, worldId,
             (Position){.x = 5.0f * (j + 1), .y = 15.0f + 5.0f * i},
-            (BoxDimensions){.x = 1.0f, .y = 1.0f},
+            (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 1.0f, .y = 1.0f},
             (PhysicsBody){.body_type = b2_dynamicBody},
             (PhysicsBodyShape){
                 .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
@@ -240,19 +250,19 @@ int main() {
     }
   }
 
-  Camera2D hero_cam;
-  hero_cam.target = Vector2Zero();
-  hero_cam.rotation = 0.0f;
-  hero_cam.zoom = settings_state.Slider001Value;
+  const Position *p = ecs_get(world, ent, Position);
+  const PlayerCamera *hero_cam = ecs_get(world, ent, PlayerCamera);
+
+  const InputsContext *inputs_ctx = ecs_singleton_get(world, InputsContext);
 
   float time_acc = 0.0f;
   // ------------------------
   while (!WindowShouldClose()) {
+    BeginDrawing(); // NOTE: a temporary hack to allow drawing in ecs systems.
+
     // ------------ Update ------------
     float delta_t = GetFrameTime();
     time_acc += delta_t;
-
-    setScreenDims(&screen_width, &screen_height);
 
     // Step physics one fixed time step at a time for accumulated #steps
     while (time_acc >= PHYS_TIME_STEP) {
@@ -260,23 +270,12 @@ int main() {
       time_acc -= PHYS_TIME_STEP;
     }
 
-    // Progress animations
-    deltaTStepAnimation6(&ghost_anim, delta_t, asset_store);
-
     // Update ECS
     ecs_progress(world, delta_t);
-    const InputsContext *inputs_ctx = ecs_singleton_get(world, InputsContext);
-
-    const Position *p = ecs_get(world, ent, Position);
-    hero_cam.offset =
-        (Vector2){.x = (float)screen_width / 2, .y = (float)screen_height / 2};
-    hero_cam.target =
-        (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
-    hero_cam.zoom = settings_state.Slider001Value;
 
     Vector2 world_mouse_pos = GetScreenToWorld2D(
         (Vector2){.x = inputs_ctx->mouse_pos.x, .y = inputs_ctx->mouse_pos.y},
-        hero_cam);
+        *hero_cam);
 
     // handle tilepicker
     for (int i = 0; i < NUM_TILEPICKER_ROWS; ++i) {
@@ -287,11 +286,11 @@ int main() {
                   (Vector2){.x = inputs_ctx->mouse_pos.x,
                             .y = inputs_ctx->mouse_pos.y},
                   (Rectangle){
-                      .x = tile.pos_x * tex_scale,
-                      .y = screen_height -
-                           (tile.pos_y + tile.tile_h) * tex_scale,
-                      .width = tile.tile_w * tex_scale,
-                      .height = tile.tile_h * tex_scale,
+                      .x = tile.pos_x * tex_conf->scale,
+                      .y = screen_dims->y -
+                           (tile.pos_y + tile.tile_h) * tex_conf->scale,
+                      .width = tile.tile_w * tex_conf->scale,
+                      .height = tile.tile_h * tex_conf->scale,
                   }) &&
               inputs_ctx->kb_inputs.l_click) {
             selected_tile = &tp.tiles[i][j];
@@ -307,14 +306,19 @@ int main() {
                       .y = inputs_ctx->mouse_pos.y},
             (Rectangle){
                 .x = 0,
-                .y = screen_height - tile_h * tex_scale * NUM_TILEPICKER_ROWS,
-                .width = tile_w * tex_scale * NUM_TILEPICKER_COLS,
-                .height = tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+                .y = screen_dims->y -
+                     tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
+                .width =
+                    tex_conf->tile_w * tex_conf->scale * NUM_TILEPICKER_COLS,
+                .height =
+                    tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
             })) {
-      int dest_x =
-          (int)world_mouse_pos.x / (tile_w * tex_scale) * (tile_w * tex_scale);
-      int dest_y =
-          (int)world_mouse_pos.y / (tile_h * tex_scale) * (tile_h * tex_scale);
+      int dest_x = (int)world_mouse_pos.x /
+                   (tex_conf->tile_w * tex_conf->scale) *
+                   (tex_conf->tile_w * tex_conf->scale);
+      int dest_y = (int)world_mouse_pos.y /
+                   (tex_conf->tile_h * tex_conf->scale) *
+                   (tex_conf->tile_h * tex_conf->scale);
       Tile tile = *selected_tile;
       // hadle eraser tool first
       if (tile.tex_choice == __TEX_ERASER) {
@@ -347,10 +351,8 @@ int main() {
     }
     // ------------------------
     // ------------ Draw ------------
-    BeginDrawing();
-    ClearBackground(settings_state.ColorPicker003Value);
 
-    BeginMode2D(hero_cam);
+    BeginMode2D(*hero_cam);
     // Draw tiles here
     for (int i = 0; i < tilemap.num_tiles; ++i) {
       Tile tile = tilemap.tiles[i];
@@ -364,8 +366,8 @@ int main() {
                      (Rectangle){
                          .x = tile.pos_x,
                          .y = tile.pos_y,
-                         .width = tile.tile_w * tex_scale,
-                         .height = tile.tile_h * tex_scale,
+                         .width = tile.tile_w * tex_conf->scale,
+                         .height = tile.tile_h * tex_conf->scale,
                      },
                      (Vector2){
                          .x = 0.0f,
@@ -376,10 +378,12 @@ int main() {
 
     if (selected_tile != NULL) {
       Tile tile = *selected_tile;
-      int dest_x =
-          (int)world_mouse_pos.x / (tile_w * tex_scale) * (tile_w * tex_scale);
-      int dest_y =
-          (int)world_mouse_pos.y / (tile_h * tex_scale) * (tile_h * tex_scale);
+      int dest_x = (int)world_mouse_pos.x /
+                   (tex_conf->tile_w * tex_conf->scale) *
+                   (tex_conf->tile_w * tex_conf->scale);
+      int dest_y = (int)world_mouse_pos.y /
+                   (tex_conf->tile_h * tex_conf->scale) *
+                   (tex_conf->tile_h * tex_conf->scale);
       DrawTexturePro(getTex(tile.tex_choice, asset_store),
                      (Rectangle){
                          .x = tile.offset_x,
@@ -390,8 +394,8 @@ int main() {
                      (Rectangle){
                          .x = dest_x,
                          .y = dest_y,
-                         .width = tile.tile_w * tex_scale,
-                         .height = tile.tile_h * tex_scale,
+                         .width = tile.tile_w * tex_conf->scale,
+                         .height = tile.tile_h * tex_conf->scale,
                      },
                      (Vector2){
                          .x = 0.0f,
@@ -409,7 +413,8 @@ int main() {
                     b2Body_IsAwake(pb->body_id) ? BLUE : BLACK);
     }
 
-    Texture ghost = getCurrFrameAnimation6(ghost_anim, asset_store);
+    const Animation *ghost_anim = ecs_get(world, ent, Animation);
+    Texture ghost = getCurrFrameAnimation(ghost_anim, asset_store);
     DrawTexturePro(ghost,
                    (Rectangle){
                        .x = 0,
@@ -420,21 +425,21 @@ int main() {
                    (Rectangle){
                        .x = (int)(p->x * 10 - 10),
                        .y = (int)(p->y * 10 - 10) * -1,
-                       .width = ghost.width * tex_scale,
-                       .height = ghost.height * tex_scale,
+                       .width = ghost.width * tex_conf->scale,
+                       .height = ghost.height * tex_conf->scale,
                    },
                    (Vector2){
-                       .x = ghost.width * tex_scale / 2.0f,
-                       .y = ghost.height * tex_scale / 2.0f,
+                       .x = ghost.width * tex_conf->scale / 2.0f,
+                       .y = ghost.height * tex_conf->scale / 2.0f,
                    },
                    0.0f, WHITE);
 
     // Draw grid lines
-    if (settings_state.CheckBoxEx006Checked) {
+    if (settings_state->CheckBoxEx006Checked) {
       rlPushMatrix();
-      rlTranslatef(0, tile_w * tex_scale / 2.0f * 500, 0);
+      rlTranslatef(0, tex_conf->tile_w * tex_conf->scale / 2.0f * 500, 0);
       rlRotatef(90, 1, 0, 0);
-      DrawGrid(1000, tile_w * tex_scale);
+      DrawGrid(1000, tex_conf->tile_w * tex_conf->scale);
       rlPopMatrix();
     }
 
@@ -444,9 +449,10 @@ int main() {
     DrawRectangleRec(
         (Rectangle){
             .x = 0,
-            .y = screen_height - tile_h * tex_scale * NUM_TILEPICKER_ROWS,
-            .width = tile_w * tex_scale * NUM_TILEPICKER_COLS,
-            .height = tile_h * tex_scale * NUM_TILEPICKER_ROWS,
+            .y = screen_dims->y -
+                 tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
+            .width = tex_conf->tile_w * tex_conf->scale * NUM_TILEPICKER_COLS,
+            .height = tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
         },
         YELLOW);
 
@@ -455,10 +461,12 @@ int main() {
         // fill with bg color
         DrawRectangleLinesEx(
             (Rectangle){
-                .x = i * tile_w * tex_scale,
-                .y = screen_height - ((j + 1) * tile_h) * tex_scale,
-                .width = tile_w * tex_scale + outline_thickness,
-                .height = tile_h * tex_scale + outline_thickness,
+                .x = i * tex_conf->tile_w * tex_conf->scale,
+                .y = screen_dims->y -
+                     ((j + 1) * tex_conf->tile_h) * tex_conf->scale,
+                .width = tex_conf->tile_w * tex_conf->scale + outline_thickness,
+                .height =
+                    tex_conf->tile_h * tex_conf->scale + outline_thickness,
             },
             outline_thickness, BLACK);
       }
@@ -468,31 +476,31 @@ int main() {
       for (int j = 0; j < NUM_TILEPICKER_COLS; ++j) {
         if (tp.has_tile[i][j]) {
           Tile tile = tp.tiles[i][j];
-          DrawTexturePro(
-              getTex(tile.tex_choice, asset_store),
-              (Rectangle){
-                  .x = tile.offset_x,
-                  .y = tile.offset_y,
-                  .width = tile.tile_w,
-                  .height = tile.tile_h,
-              },
-              (Rectangle){
-                  .x = tile.pos_x * tex_scale,
-                  .y = screen_height - (tile.pos_y + tile.tile_h) * tex_scale,
-                  .width = tile.tile_w * tex_scale,
-                  .height = tile.tile_h * tex_scale,
-              },
-              (Vector2){
-                  .x = 0,
-                  .y = 0,
-              },
-              0.0f, WHITE);
+          DrawTexturePro(getTex(tile.tex_choice, asset_store),
+                         (Rectangle){
+                             .x = tile.offset_x,
+                             .y = tile.offset_y,
+                             .width = tile.tile_w,
+                             .height = tile.tile_h,
+                         },
+                         (Rectangle){
+                             .x = tile.pos_x * tex_conf->scale,
+                             .y = screen_dims->y -
+                                  (tile.pos_y + tile.tile_h) * tex_conf->scale,
+                             .width = tile.tile_w * tex_conf->scale,
+                             .height = tile.tile_h * tex_conf->scale,
+                         },
+                         (Vector2){
+                             .x = 0,
+                             .y = 0,
+                         },
+                         0.0f, WHITE);
         }
       }
     }
 
     // gui
-    GuiLayoutJungle(&settings_state);
+    GuiLayoutJungle(settings_state);
 
     DrawFPS(20, 20);
     EndDrawing();
@@ -512,7 +520,7 @@ int main() {
   ecs_os_free(json);
 
   // Save settings
-  if (writeSettingsToFile(SETTINGS_FILE, &settings_state)) {
+  if (writeSettingsToFile(SETTINGS_FILE, settings_state)) {
     printf("Saved settings in %s successfully.\n", SETTINGS_FILE);
   } else {
     printf("Failed to save settings in %s.\n", SETTINGS_FILE);

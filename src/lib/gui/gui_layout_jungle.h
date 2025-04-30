@@ -34,18 +34,7 @@
 #ifndef GUI_LAYOUT_NAME_H
 #define GUI_LAYOUT_NAME_H
 
-typedef struct {
-  Vector2 anchor01;
-
-  bool WindowBox000Active;
-  float Slider001Value;
-  Color ColorPicker003Value;
-  bool CheckBoxEx006Checked;
-
-  // Custom state variables (depend on development software)
-  // NOTE: This variables should be added manually if required
-
-} GuiLayoutJungleState;
+#include "components/components.h"
 
 #ifdef __cplusplus
 extern "C" { // Prevents name mangling of functions

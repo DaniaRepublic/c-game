@@ -15,7 +15,8 @@ make
   - [x] GUI           |??:??-05:28+2d|
   - [ ] Editor        |07:01-xx:xx|
     - [x] Tilemap     |07:01-17:08+2d|
-  - [x] Saving        |??:??-02:00+1w|
+  - [x] Saving        |??:??-00:00+8d|
+    - [x] Components  |??:??-02:00+1w|
   - [ ] Shaders       |xx:xx-xx:xx|
 
 ### Notes

@@ -4,7 +4,12 @@
 #include "flecs/addons/flecs_c.h"
 #include "raylib.h"
 
-void DrawEnemiesSystem(ecs_iter_t *it) {
+void DrawBackground(ecs_iter_t *it) {
+  GuiLayoutJungleState *settings_state = ecs_field(it, GuiLayoutJungleState, 0);
+  ClearBackground(settings_state->ColorPicker003Value);
+}
+
+void DrawEnemies(ecs_iter_t *it) {
   Position *p = ecs_field(it, Position, 0);
   PhysicsBodyId *pb = ecs_field(it, PhysicsBodyId, 1);
 

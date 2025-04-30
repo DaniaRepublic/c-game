@@ -2,4 +2,5 @@
 
 #include "flecs.h"
 
-void DrawEnemiesSystem(ecs_iter_t *it);
+void DrawBackground(ecs_iter_t *it);
+void DrawEnemies(ecs_iter_t *it);

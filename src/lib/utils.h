@@ -6,42 +6,13 @@
 #include "lib/gui/gui_layout_jungle.h"
 #include "lib/gui/jungle.h"
 
+#include "components/components.h"
+
 static int settingsParser(void *user, const char *section, const char *name,
                           const char *value);
 bool readSettingsFromFile(const char *filename, GuiLayoutJungleState *state);
 bool writeSettingsToFile(const char *filename,
                          const GuiLayoutJungleState *state);
-
-void setScreenDims(int *w, int *h);
-
-typedef enum {
-  _TEX_ENTITIES_START = 0,
-  // Game entities have a band of [1, 999)
-  TEX_HERO = 1,
-  TEX_GHOST1 = 2,
-  TEX_GHOST2 = 3,
-  TEX_GHOST3 = 4,
-  TEX_GHOST4 = 5,
-  _TEX_ENTITIES_END, // WARNING DON'T MOVE!!!
-
-  _TEX_TILESETS_START = 1000,
-  // Tilesets have a band of [1001, 1999)
-  TEX_TILESET_CONCRETE = 1001,
-  _TEX_TILESETS_END, // WARNING DON'T MOVE!!!
-
-  // Special textures have a band of [10001, 10099)
-  _TEX_SPECIAL_START = 10000,
-  __TEX_ERASER = 10001, // An eraser for textures.
-  _TEX_SPECIAL_END,     // WARNING DON'T MOVE!!!
-
-  // ADD ADDITIONAL SECTIONS HERE
-
-  _TEX_ENTITIES_LEN = _TEX_ENTITIES_END - _TEX_ENTITIES_START - 1,
-  _TEX_TILESETS_LEN = _TEX_TILESETS_END - _TEX_TILESETS_START - 1,
-  _TEX_SPECIAL_LEN = _TEX_SPECIAL_END - _TEX_SPECIAL_START - 1,
-
-  _TEX_LEN = _TEX_ENTITIES_LEN + _TEX_TILESETS_LEN + _TEX_SPECIAL_LEN,
-} TextureChoice;
 
 // Returns sequential idx if choice is in TextureChoice and -1 otherwise.
 int getTextureChoiceSeq(TextureChoice choice);
@@ -99,22 +70,12 @@ typedef struct {
   int num_tiles;
 } Tilemap;
 
-// Used for animation with a maximum of 6 frames.
-typedef struct {
-  int frames[6];
-  int curr_frame_idx;
-  int total_frames;
-  // in sec
-  float frame_duration;
-  // in sec
-  float since_last_frame;
-} Animation6;
+Texture getCurrFrameAnimation(const Animation *anim, AssetStore *store);
 
-Texture getCurrFrameAnimation6(Animation6 anim, AssetStore *store);
+void stepAnimation(Animation *anim);
 
-void stepAnimation6(Animation6 *anim, AssetStore *store);
-
-bool deltaTStepAnimation6(Animation6 *anim, float delta_t, AssetStore *store);
+bool deltaTStepAnimation(Animation *anim, float delta_t,
+                         const AssetStore *store);
 
 // Returns true if choice is in AssetStore.
 bool hasTex(TextureChoice choice, AssetStore *store);

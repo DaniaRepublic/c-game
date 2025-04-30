@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "components/components.h"
 #include "lib/ini.h"
 #include "raylib.h"
 
@@ -116,12 +117,6 @@ bool writeSettingsToFile(const char *filename,
   return true;
 }
 
-// Window state management.
-void setScreenDims(int *w, int *h) {
-  *w = GetRenderWidth();
-  *h = GetRenderHeight();
-}
-
 int getTextureChoiceSeq(TextureChoice choice) {
   if ((choice > _TEX_ENTITIES_START) && (choice < _TEX_ENTITIES_END)) {
     return choice - (_TEX_ENTITIES_START + 1);
@@ -135,21 +130,22 @@ int getTextureChoiceSeq(TextureChoice choice) {
 }
 
 // Returns texture at curr_frame_idx.
-Texture getCurrFrameAnimation6(Animation6 anim, AssetStore *store) {
-  return getTex(anim.frames[anim.curr_frame_idx], store);
+Texture getCurrFrameAnimation(const Animation *anim, AssetStore *store) {
+  return getTex(anim->frames[anim->curr_frame_idx], store);
 }
 
 // Simply updates curr_frame_idx, wraping if nessesary.
-void stepAnimation6(Animation6 *anim, AssetStore *store) {
+void stepAnimation(Animation *anim) {
   anim->curr_frame_idx = (anim->curr_frame_idx + 1) % anim->total_frames;
 }
 
 // Adds delta_t and steps if needed. Returns true if step was made.
-bool deltaTStepAnimation6(Animation6 *anim, float delta_t, AssetStore *store) {
+bool deltaTStepAnimation(Animation *anim, float delta_t,
+                         const AssetStore *store) {
   anim->since_last_frame += delta_t;
   if (anim->since_last_frame >= anim->frame_duration) {
     anim->since_last_frame -= anim->frame_duration;
-    stepAnimation6(anim, store);
+    stepAnimation(anim);
     return true;
   }
   return false;
