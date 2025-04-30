@@ -252,7 +252,6 @@ int main() {
 
   const Position *p = ecs_get(world, ent, Position);
   const PlayerCamera *hero_cam = ecs_get(world, ent, PlayerCamera);
-
   const InputsContext *inputs_ctx = ecs_singleton_get(world, InputsContext);
 
   float time_acc = 0.0f;
@@ -403,36 +402,6 @@ int main() {
                      },
                      0.0f, WHITE);
     }
-
-    DrawRectangle(-1500, 20, 3000, 200, GREEN);
-
-    for (int i = 0; i < 10; ++i) {
-      const Position *p = ecs_get(world, ent_arr[i], Position);
-      const PhysicsBodyId *pb = ecs_get(world, ent_arr[i], PhysicsBodyId);
-      DrawRectangle(p->x * 10 - 10, (p->y * 10 - 10) * -1, 20, 20,
-                    b2Body_IsAwake(pb->body_id) ? BLUE : BLACK);
-    }
-
-    const Animation *ghost_anim = ecs_get(world, ent, Animation);
-    Texture ghost = getCurrFrameAnimation(ghost_anim, asset_store);
-    DrawTexturePro(ghost,
-                   (Rectangle){
-                       .x = 0,
-                       .y = 0,
-                       .width = ghost.width,
-                       .height = ghost.height,
-                   },
-                   (Rectangle){
-                       .x = (int)(p->x * 10 - 10),
-                       .y = (int)(p->y * 10 - 10) * -1,
-                       .width = ghost.width * tex_conf->scale,
-                       .height = ghost.height * tex_conf->scale,
-                   },
-                   (Vector2){
-                       .x = ghost.width * tex_conf->scale / 2.0f,
-                       .y = ghost.height * tex_conf->scale / 2.0f,
-                   },
-                   0.0f, WHITE);
 
     // Draw grid lines
     if (settings_state->CheckBoxEx006Checked) {

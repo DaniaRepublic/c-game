@@ -28,49 +28,37 @@ void SyncPhysicsSystem(ecs_iter_t *it) {
 
 void ApplyControlsSystem(ecs_iter_t *it) {
   PhysicsBodyId *pb = ecs_field(it, PhysicsBodyId, 0);
-  // Singletons
   const InputsContext *ctx = ecs_field(it, InputsContext, 1);
 
-  float maxSpeed = 30.0f;
-  float dashExtra = 50.0f;
+  const float moveSpeed = 30.0f;  // world units per second
+  const float dashBonus = 500.0f; // extra speed when dashing
 
   for (int i = 0; i < it->count; i++) {
     b2BodyId body = pb[i].body_id;
-    b2Vec2 linVel = b2Body_GetLinearVelocity(body);
 
-    b2Vec2 inputDir = b2Vec2_zero;
-    if (ctx->kb_inputs.d) {
-      inputDir.x += 1;
+    // 1) Build raw input vector
+    b2Vec2 dir = b2Vec2_zero;
+    if (ctx->kb_inputs.d)
+      dir.x += 1;
+    if (ctx->kb_inputs.a)
+      dir.x -= 1;
+    if (ctx->kb_inputs.w)
+      dir.y += 1;
+    if (ctx->kb_inputs.s)
+      dir.y -= 1;
+
+    b2Vec2 targetVel = b2Vec2_zero;
+    if (b2Length(dir) > 1e-3f) {
+      dir = b2Normalize(dir);
+      targetVel = b2MulSV(moveSpeed, dir);
+    } else {
     }
-    if (ctx->kb_inputs.a) {
-      inputDir.x -= 1;
-    }
-    if (ctx->kb_inputs.w) {
-      inputDir.y += 1;
-    }
-    if (ctx->kb_inputs.s) {
-      inputDir.y -= 1;
-    }
 
-    if (b2Length(inputDir) > 1e-6) {
-      b2Vec2 normDir = b2Normalize(inputDir);
+    b2Body_SetLinearVelocity(body, b2Lerp(b2Body_GetLinearVelocity(body),
+                                          targetVel, PHYS_TIME_STEP));
 
-      float mass = b2Body_GetMass(body);
-      // Impulse = mass * acceleration * dt.
-      b2Vec2 accelImpulse = b2MulSV(mass * maxSpeed * PHYS_TIME_STEP, normDir);
-
-      float currentSpeed = b2Length(linVel);
-      if (currentSpeed < maxSpeed) {
-        b2Body_ApplyLinearImpulseToCenter(body, accelImpulse, true);
-      } else {
-        if (b2Dot(linVel, normDir) < 0)
-          b2Body_ApplyLinearImpulseToCenter(body, accelImpulse, true);
-      }
-
-      if (ctx->kb_inputs.space) {
-        b2Vec2 dashImpulse = b2MulSV(mass * dashExtra, normDir);
-        b2Body_ApplyLinearImpulseToCenter(body, dashImpulse, true);
-      }
+    if (ctx->kb_inputs.space) {
+      b2Body_ApplyLinearImpulseToCenter(body, b2MulSV(dashBonus, dir), true);
     }
   }
 }

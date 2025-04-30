@@ -70,7 +70,7 @@ typedef struct {
   int num_tiles;
 } Tilemap;
 
-Texture getCurrFrameAnimation(const Animation *anim, AssetStore *store);
+Texture getCurrFrameAnimation(const Animation *anim, const AssetStore *store);
 
 void stepAnimation(Animation *anim);
 
@@ -80,7 +80,7 @@ bool deltaTStepAnimation(Animation *anim, float delta_t,
 // Returns true if choice is in AssetStore.
 bool hasTex(TextureChoice choice, AssetStore *store);
 
-Texture getTex(TextureChoice choice, AssetStore *store);
+Texture getTex(TextureChoice choice, const AssetStore *store);
 
 // Returns true if texture was replaced.
 bool setTex(TextureChoice choice, Texture2D tex, AssetStore *store);

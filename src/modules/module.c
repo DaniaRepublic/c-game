@@ -153,7 +153,12 @@ void MainModuleImport(ecs_world_t *world) {
   ECS_SYSTEM(world, UpdatePlayerCamera, EcsOnUpdate, Position, PlayerCamera,
              ScreenDims($), GuiLayoutJungleState($));
   ECS_SYSTEM(world, DrawBackground, EcsOnStore, GuiLayoutJungleState($));
-  // ECS_SYSTEM(world, DrawEnemies, EcsOnStore, Position, PhysicsBody);
+  ECS_SYSTEM(world, BeginCameraMode, EcsOnStore, PlayerCamera);
+  ECS_SYSTEM(world, DrawColliders, EcsOnStore, Position, PhysicsBodyId,
+             BoxDimensions);
+  ECS_SYSTEM(world, DrawAnimations, EcsOnStore, Position, Animation,
+             AssetStore($), TextureConfig($));
+  ECS_SYSTEM(world, EndCameraMode, EcsOnStore);
 }
 
 ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,

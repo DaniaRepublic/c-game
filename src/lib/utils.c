@@ -130,7 +130,7 @@ int getTextureChoiceSeq(TextureChoice choice) {
 }
 
 // Returns texture at curr_frame_idx.
-Texture getCurrFrameAnimation(const Animation *anim, AssetStore *store) {
+Texture getCurrFrameAnimation(const Animation *anim, const AssetStore *store) {
   return getTex(anim->frames[anim->curr_frame_idx], store);
 }
 
@@ -156,7 +156,7 @@ bool hasTex(TextureChoice choice, AssetStore *store) {
   return store->_texture_is_set[getTextureChoiceSeq(choice)];
 }
 
-Texture getTex(TextureChoice choice, AssetStore *store) {
+Texture getTex(TextureChoice choice, const AssetStore *store) {
   return store->_textures[getTextureChoiceSeq(choice)];
 }
 
