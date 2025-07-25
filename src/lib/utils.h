@@ -41,15 +41,6 @@ typedef struct {
   int num_x, num_y;
 } Tileset;
 
-// Single tile (AoS)
-typedef struct {
-  TextureChoice tex_choice;
-  // in pixels
-  int tile_w, tile_h;
-  int offset_x, offset_y;
-  int pos_x, pos_y;
-} Tile;
-
 #define NUM_TILEPICKER_ROWS 3
 #define NUM_TILEPICKER_COLS 8
 
@@ -59,16 +50,10 @@ typedef struct {
   bool has_tile[NUM_TILEPICKER_ROWS][NUM_TILEPICKER_COLS];
   int curr_row, curr_col;
   int tile_w, tile_h;
+  float outline_thickness;
 } TilePicker;
 
 bool addTileToTilePicker(Tile, TilePicker *);
-
-#define NUM_TILEMAP_TILES 128
-
-typedef struct {
-  Tile tiles[NUM_TILEMAP_TILES];
-  int num_tiles;
-} Tilemap;
 
 Texture getCurrFrameAnimation(const Animation *anim, const AssetStore *store);
 

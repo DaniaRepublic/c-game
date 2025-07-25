@@ -29,7 +29,11 @@ ECS_COMPONENT_DECLARE(PhysicsBodyId);
 ECS_COMPONENT_DECLARE(Position);
 ECS_COMPONENT_DECLARE(Velocity);
 ECS_COMPONENT_DECLARE(Animation);
+ECS_COMPONENT_DECLARE(TextureChoice);
 ECS_COMPONENT_DECLARE(TextureConfig);
+ECS_COMPONENT_DECLARE(Tile);
+ECS_COMPONENT_DECLARE(Tilemap);
+ECS_COMPONENT_DECLARE(TilePicker);
 ECS_COMPONENT_DECLARE(PlayerCamera);
 ECS_COMPONENT_DECLARE(GuiLayoutJungleState);
 ECS_COMPONENT_DECLARE(Color);
@@ -115,6 +119,54 @@ void MainModuleImport(ecs_world_t *world) {
                    {.name = "total_frames", .type = ecs_id(ecs_i32_t)},
                    {.name = "frame_duration", .type = ecs_id(ecs_f32_t)},
                    {.name = "since_last_frame", .type = ecs_id(ecs_f32_t)}}});
+  ECS_COMPONENT_DEFINE(world, TextureChoice);
+  ecs_enum(world, {.entity = ecs_id(TextureChoice),
+                   .constants = {
+                       {.name = "_TEX_ENTITIES_START", .value = 0},
+                       {.name = "TEX_HERO", .value = 1},
+                       {.name = "TEX_GHOST1", .value = 2},
+                       {.name = "TEX_GHOST2", .value = 3},
+                       {.name = "TEX_GHOST3", .value = 4},
+                       {.name = "TEX_GHOST4", .value = 5},
+                       {.name = "TEX_TILESET_CONCRETE", .value = 1001},
+                       {.name = "__TEX_ERASER", .value = 10001},
+                   }});
+  ECS_COMPONENT_DEFINE(world, Tile);
+  ecs_struct(world, {.entity = ecs_id(Tile),
+                     .members = {
+                         {.name = "tex_choice", .type = ecs_id(TextureChoice)},
+                         {.name = "tile_w", .type = ecs_id(ecs_i32_t)},
+                         {.name = "tile_h", .type = ecs_id(ecs_i32_t)},
+                         {.name = "offset_x", .type = ecs_id(ecs_i32_t)},
+                         {.name = "offset_y", .type = ecs_id(ecs_i32_t)},
+                         {.name = "pos_x", .type = ecs_id(ecs_i32_t)},
+                         {.name = "pos_y", .type = ecs_id(ecs_i32_t)},
+                     }});
+  ECS_COMPONENT_DEFINE(world, Tilemap);
+  ecs_struct(world, {.entity = ecs_id(Tilemap),
+                     .members = {
+                         {.name = "tiles",
+                          .type = ecs_array(world, {.count = NUM_TILEMAP_TILES,
+                                                    .type = ecs_id(Tile)})},
+                         {.name = "num_tiles", .type = ecs_id(ecs_i32_t)},
+                     }});
+  ECS_COMPONENT_DEFINE(world, TilePicker);
+  ecs_struct(
+      world,
+      {.entity = ecs_id(TilePicker),
+       .members = {{.name = "tiles",
+                    .type = ecs_array(world, {.count = NUM_TILEPICKER_ROWS *
+                                                       NUM_TILEPICKER_COLS,
+                                              .type = ecs_id(Tile)})},
+                   {.name = "has_tile",
+                    .type = ecs_array(world, {.count = NUM_TILEPICKER_ROWS *
+                                                       NUM_TILEPICKER_COLS,
+                                              .type = ecs_id(ecs_bool_t)})},
+                   {.name = "curr_row", .type = ecs_id(ecs_i32_t)},
+                   {.name = "curr_col", .type = ecs_id(ecs_i32_t)},
+                   {.name = "tile_w", .type = ecs_id(ecs_i32_t)},
+                   {.name = "tile_h", .type = ecs_id(ecs_i32_t)},
+                   {.name = "outline_thickness", .type = ecs_id(ecs_f32_t)}}});
   ECS_COMPONENT_DEFINE(world, Color);
   ecs_struct(world, {.entity = ecs_id(Color),
                      .members = {{.name = "r", .type = ecs_id(ecs_u8_t)},
@@ -132,33 +184,56 @@ void MainModuleImport(ecs_world_t *world) {
            {.name = "ColorPicker003Value", .type = ecs_id(Color)},
            {.name = "CheckBoxEx006Checked", .type = ecs_id(ecs_bool_t)}}});
 
+  ecs_singleton_set(world, Tile, {0});
   ecs_singleton_set(world, InputsContext, {0});
   ecs_singleton_set(world, AssetStore, {0});
   ecs_singleton_set(world, ScreenDims, {0});
   ecs_singleton_set(world, TextureConfig, {0});
+  ecs_singleton_set(world, PlayerCamera, {0});
   ecs_singleton_set(world, GuiLayoutJungleState, {0});
 
   ECS_TAG_DEFINE(world, TagControllable);
   ECS_TAG_DEFINE(world, TagStatic);
   ECS_TAG_DEFINE(world, TagCube);
 
+  // NOTE: in systems components appear in the following sequence:
+  // normal, singletons, tags.
   ECS_SYSTEM(world, UpdateInputsContextSystem, EcsOnLoad, InputsContext($));
   ECS_SYSTEM(world, SyncScreenDims, EcsOnLoad, ScreenDims($));
+
   ECS_SYSTEM(world, ApplyControlsSystem, EcsOnUpdate, PhysicsBodyId,
              InputsContext($), TagControllable);
   ECS_SYSTEM(world, SyncPhysicsSystem, EcsOnUpdate, Position, Velocity,
              PhysicsBodyId);
   ECS_SYSTEM(world, UpdateAnimation, EcsOnUpdate, Animation, InputsContext($),
              AssetStore($));
-  ECS_SYSTEM(world, UpdatePlayerCamera, EcsOnUpdate, Position, PlayerCamera,
-             ScreenDims($), GuiLayoutJungleState($));
+  ECS_SYSTEM(world, UpdateTilepicker, EcsOnUpdate, TilePicker, InputsContext($),
+             ScreenDims($), TextureConfig($), Tile($));
+  ECS_SYSTEM(world, UpdateTilemap, EcsOnUpdate, Tilemap, InputsContext($),
+             ScreenDims($), TextureConfig($), PlayerCamera($), Tile($));
+  ECS_SYSTEM(world, UpdatePlayerCamera, EcsOnUpdate, Position, PlayerCamera($),
+             ScreenDims($), GuiLayoutJungleState($), TagControllable);
+
+  ECS_SYSTEM(world, BeginDrawingSystem, EcsOnStore);
   ECS_SYSTEM(world, DrawBackground, EcsOnStore, GuiLayoutJungleState($));
-  ECS_SYSTEM(world, BeginCameraMode, EcsOnStore, PlayerCamera);
+  ECS_SYSTEM(world, BeginCameraMode, EcsOnStore,
+             PlayerCamera($)); // NOTE: camera mode begins
   ECS_SYSTEM(world, DrawColliders, EcsOnStore, Position, PhysicsBodyId,
              BoxDimensions);
   ECS_SYSTEM(world, DrawAnimations, EcsOnStore, Position, Animation,
              AssetStore($), TextureConfig($));
-  ECS_SYSTEM(world, EndCameraMode, EcsOnStore);
+  ECS_SYSTEM(world, DrawGridSystem, EcsOnStore, GuiLayoutJungleState($),
+             TextureConfig($));
+  ECS_SYSTEM(world, DrawTilemap, EcsOnStore, Tilemap, TextureConfig($),
+             AssetStore($));
+  ECS_SYSTEM(world, DrawHoldingTile, EcsOnStore, AssetStore($),
+             InputsContext($), TextureConfig($), PlayerCamera($), Tile($));
+  ECS_SYSTEM(world, EndCameraMode, EcsOnStore); // NOTE: camera mode ends
+  ECS_SYSTEM(world, DrawTilePicker, EcsOnStore, TilePicker, InputsContext($),
+             TextureConfig($), PlayerCamera($), Tile($), ScreenDims($),
+             AssetStore($));
+  ECS_SYSTEM(world, DrawGui, EcsOnStore, GuiLayoutJungleState($));
+  ECS_SYSTEM(world, EndDrawingSystem, EcsOnStore);
 }
 
 ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,

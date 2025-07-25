@@ -83,8 +83,106 @@ void UpdatePlayerCamera(ecs_iter_t *it) {
   const GuiLayoutJungleState *settings_state =
       ecs_field(it, GuiLayoutJungleState, 3);
 
-  cam->offset =
+  PlayerCamera new_cam = {0};
+  new_cam.offset =
       (Vector2){.x = (float)screen_dims->x / 2, .y = (float)screen_dims->y / 2};
-  cam->target = (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
-  cam->zoom = settings_state->Slider001Value;
+  new_cam.target = (Vector2){.x = p->x * 10 - 10, .y = (p->y * 10 - 10) * -1};
+  new_cam.zoom = settings_state->Slider001Value;
+
+  *cam = new_cam;
+}
+
+void UpdateTilemap(ecs_iter_t *it) {
+  Tilemap *tilemap = ecs_field(it, Tilemap, 0);
+  const InputsContext *inputs_ctx = ecs_field(it, InputsContext, 1);
+  const ScreenDims *screen_dims = ecs_field(it, ScreenDims, 2);
+  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 3);
+  const PlayerCamera *hero_cam = ecs_field(it, PlayerCamera, 4);
+  const Tile *selected_tile = ecs_field(it, Tile, 5);
+
+  Vector2 world_mouse_pos = GetScreenToWorld2D(
+      (Vector2){.x = inputs_ctx->mouse_pos.x, .y = inputs_ctx->mouse_pos.y},
+      *hero_cam);
+
+  // handle tile placement (tilemap)
+  if ((memcmp(selected_tile, &(Tile){0}, sizeof(Tile)) != 0) &&
+      inputs_ctx->kb_inputs.l_down &&
+      !CheckCollisionPointRec( // mouse not over tilepicker
+          (Vector2){.x = inputs_ctx->mouse_pos.x, .y = inputs_ctx->mouse_pos.y},
+          (Rectangle){
+              .x = 0,
+              .y = screen_dims->y -
+                   tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
+              .width = tex_conf->tile_w * tex_conf->scale * NUM_TILEPICKER_COLS,
+              .height =
+                  tex_conf->tile_h * tex_conf->scale * NUM_TILEPICKER_ROWS,
+          })) {
+    int dest_x =
+        (int)world_mouse_pos.x / (tex_conf->tile_w * tex_conf->scale) *
+            (tex_conf->tile_w * tex_conf->scale) -
+        (world_mouse_pos.x < 0 ? (tex_conf->tile_w * tex_conf->scale) : 0);
+    int dest_y =
+        (int)world_mouse_pos.y / (tex_conf->tile_h * tex_conf->scale) *
+            (tex_conf->tile_h * tex_conf->scale) -
+        (world_mouse_pos.y < 0 ? (tex_conf->tile_h * tex_conf->scale) : 0);
+    Tile tile = *selected_tile;
+    // hadle eraser tool first
+    if (tile.tex_choice == __TEX_ERASER) {
+      // if placing on another tile, remove it
+      for (int i = 0; i < tilemap->num_tiles; ++i) {
+        if ((tilemap->tiles[i].pos_x == dest_x) &&
+            (tilemap->tiles[i].pos_y == dest_y)) {
+          --tilemap->num_tiles;
+          tilemap->tiles[i] = tilemap->tiles[tilemap->num_tiles];
+        }
+      }
+    } else {
+      // if placing on another tile, remove it
+      for (int i = 0; i < tilemap->num_tiles; ++i) {
+        if ((tilemap->tiles[i].pos_x == dest_x) &&
+            (tilemap->tiles[i].pos_y == dest_y)) {
+          --tilemap->num_tiles;
+          tilemap->tiles[i] = tilemap->tiles[tilemap->num_tiles];
+          break;
+        }
+      }
+      // only can add tile if tilemap not full
+      if (tilemap->num_tiles < NUM_TILEMAP_TILES) {
+        tile.pos_x = dest_x;
+        tile.pos_y = dest_y;
+        tilemap->tiles[tilemap->num_tiles] = tile;
+        ++tilemap->num_tiles;
+      }
+    }
+  }
+}
+
+void UpdateTilepicker(ecs_iter_t *it) {
+  const TilePicker *tp = ecs_field(it, TilePicker, 0);
+  const InputsContext *inputs_ctx = ecs_field(it, InputsContext, 1);
+  const ScreenDims *screen_dims = ecs_field(it, ScreenDims, 2);
+  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 3);
+  Tile *selected_tile = ecs_field(it, Tile, 4);
+
+  // handle tilepicker
+  for (int i = 0; i < NUM_TILEPICKER_ROWS; ++i) {
+    for (int j = 0; j < NUM_TILEPICKER_COLS; ++j) {
+      if (tp->has_tile[i][j]) {
+        Tile tile = tp->tiles[i][j];
+        if (CheckCollisionPointRec(
+                (Vector2){.x = inputs_ctx->mouse_pos.x,
+                          .y = inputs_ctx->mouse_pos.y},
+                (Rectangle){
+                    .x = tile.pos_x * tex_conf->scale,
+                    .y = screen_dims->y -
+                         (tile.pos_y + tile.tile_h) * tex_conf->scale,
+                    .width = tile.tile_w * tex_conf->scale,
+                    .height = tile.tile_h * tex_conf->scale,
+                }) &&
+            inputs_ctx->kb_inputs.l_click) {
+          *selected_tile = tp->tiles[i][j];
+        }
+      }
+    }
+  }
 }

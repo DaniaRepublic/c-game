@@ -8,3 +8,5 @@ void SyncPhysicsSystem(ecs_iter_t *it);
 void ApplyControlsSystem(ecs_iter_t *it);
 void UpdateAnimation(ecs_iter_t *it);
 void UpdatePlayerCamera(ecs_iter_t *it);
+void UpdateTilemap(ecs_iter_t *it);
+void UpdateTilepicker(ecs_iter_t *it);

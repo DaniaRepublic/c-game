@@ -233,9 +233,11 @@ void freeAssetStore(AssetStore *store) {
 
 // Tiles
 bool addTileToTilePicker(Tile t, TilePicker *tp) {
+  // tile picker row or col out of range
   if ((tp->curr_row >= NUM_TILEPICKER_ROWS) ||
       (tp->curr_col >= NUM_TILEPICKER_COLS))
     return false;
+  // tile dimension doesn't match
   if ((t.tile_w != tp->tile_w) || (t.tile_h != tp->tile_h))
     return false;
   t.pos_x = tp->curr_col * tp->tile_w;

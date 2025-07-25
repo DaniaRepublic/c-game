@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include <stdio.h>
 
 #include "box2d/box2d.h"
@@ -41,6 +42,8 @@ typedef struct KeyboardInputs {
   bool d;
   // true if down
   bool l_shift;
+  // true if down
+  bool l_down;
   // true if pressed
   bool e;
   // true if pressed
@@ -60,7 +63,7 @@ typedef struct InputsContext {
 typedef Camera2D PlayerCamera;
 
 typedef enum {
-  _TEX_ENTITIES_START = 0,
+  _TEX_ENTITIES_START = 0, // doubles down as empty tile (starting tile)
   // Game entities have a band of [1, 999)
   TEX_HERO = 1,
   TEX_GHOST1 = 2,
@@ -110,6 +113,22 @@ typedef struct Animation {
   // in sec
   float since_last_frame;
 } Animation;
+
+// Single tile (AoS)
+typedef struct {
+  TextureChoice tex_choice;
+  // in pixels
+  int tile_w, tile_h;
+  int offset_x, offset_y;
+  int pos_x, pos_y;
+} Tile;
+
+#define NUM_TILEMAP_TILES 2048
+
+typedef struct {
+  Tile tiles[NUM_TILEMAP_TILES];
+  int num_tiles;
+} Tilemap;
 
 typedef struct {
   Vector2 anchor01;

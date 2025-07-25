@@ -16,6 +16,8 @@ void SyncScreenDims(ecs_iter_t *it) {
 }
 
 void UpdateInputsContextSystem(ecs_iter_t *it) {
+  InputsContext *ctx = ecs_field(it, InputsContext, 0);
+
   InputsContext new_ctx;
   new_ctx.delta_t = it->delta_time;
   new_ctx.mouse_pos = GetMousePosition();
@@ -29,8 +31,8 @@ void UpdateInputsContextSystem(ecs_iter_t *it) {
       .space = IsKeyPressed(KEY_SPACE),
       .r_click = IsMouseButtonPressed(MOUSE_RIGHT_BUTTON),
       .l_click = IsMouseButtonPressed(MOUSE_LEFT_BUTTON),
+      .l_down = IsMouseButtonDown(MOUSE_LEFT_BUTTON),
   };
 
-  InputsContext *ctx = ecs_field(it, InputsContext, 0);
   *ctx = new_ctx;
 }
