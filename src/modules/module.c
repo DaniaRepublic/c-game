@@ -16,12 +16,14 @@
 
 ECS_COMPONENT_DECLARE(b2BodyId);
 ECS_COMPONENT_DECLARE(b2BodyType);
+ECS_COMPONENT_DECLARE(VirtualScreen);
 ECS_COMPONENT_DECLARE(Vector2);
+ECS_COMPONENT_DECLARE(Rotation);
 ECS_COMPONENT_DECLARE(Gravity);
 ECS_COMPONENT_DECLARE(BoxDimensions);
 ECS_COMPONENT_DECLARE(InputsContext);
 ECS_COMPONENT_DECLARE(AssetStore);
-ECS_COMPONENT_DECLARE(ScreenDims);
+ECS_COMPONENT_DECLARE(DisplayData);
 ECS_COMPONENT_DECLARE(Drawable);
 ECS_COMPONENT_DECLARE(PhysicsBody);
 ECS_COMPONENT_DECLARE(PhysicsBodyShape);
@@ -45,12 +47,10 @@ ECS_TAG_DECLARE(TagCube);
 void MainModuleImport(ecs_world_t *world) {
   ECS_MODULE(world, MainModule);
 
+  ECS_COMPONENT_DEFINE(world, VirtualScreen);
   ECS_COMPONENT_DEFINE(world, InputsContext);
   ECS_COMPONENT_DEFINE(world, AssetStore);
-  ECS_COMPONENT_DEFINE(world, ScreenDims);
-  ecs_struct(world, {.entity = ecs_id(ScreenDims),
-                     .members = {{.name = "x", .type = ecs_id(ecs_f32_t)},
-                                 {.name = "y", .type = ecs_id(ecs_f32_t)}}});
+  ECS_COMPONENT_DEFINE(world, DisplayData);
   ECS_COMPONENT_DEFINE(world, TextureConfig);
   ECS_COMPONENT_DEFINE(world, Drawable);
   ECS_COMPONENT_DEFINE(world, Vector2);
@@ -73,6 +73,11 @@ void MainModuleImport(ecs_world_t *world) {
   ecs_struct(world, {.entity = ecs_id(BoxDimensions),
                      .members = {{.name = "x", .type = ecs_id(ecs_f32_t)},
                                  {.name = "y", .type = ecs_id(ecs_f32_t)}}});
+  ECS_COMPONENT_DEFINE(world, Rotation);
+  ecs_struct(world, {.entity = ecs_id(Rotation),
+                     .members = {
+                         {.name = "rads", .type = ecs_id(ecs_f32_t)},
+                     }});
   ECS_COMPONENT_DEFINE(world, PlayerCamera);
   ecs_struct(world,
              {.entity = ecs_id(PlayerCamera),
@@ -184,10 +189,11 @@ void MainModuleImport(ecs_world_t *world) {
            {.name = "ColorPicker003Value", .type = ecs_id(Color)},
            {.name = "CheckBoxEx006Checked", .type = ecs_id(ecs_bool_t)}}});
 
+  ecs_singleton_set(world, VirtualScreen, {0});
   ecs_singleton_set(world, Tile, {0});
   ecs_singleton_set(world, InputsContext, {0});
   ecs_singleton_set(world, AssetStore, {0});
-  ecs_singleton_set(world, ScreenDims, {0});
+  ecs_singleton_set(world, DisplayData, {0});
   ecs_singleton_set(world, TextureConfig, {0});
   ecs_singleton_set(world, PlayerCamera, {0});
   ecs_singleton_set(world, GuiLayoutJungleState, {0});
@@ -196,54 +202,64 @@ void MainModuleImport(ecs_world_t *world) {
   ECS_TAG_DEFINE(world, TagStatic);
   ECS_TAG_DEFINE(world, TagCube);
 
-  // NOTE: in systems components appear in the following sequence:
+  // NOTE: in systems components appear in the following order:
   // normal, singletons, tags.
-  ECS_SYSTEM(world, UpdateInputsContextSystem, EcsOnLoad, InputsContext($));
-  ECS_SYSTEM(world, SyncScreenDims, EcsOnLoad, ScreenDims($));
+  ECS_SYSTEM(world, SyncDisplayDataSystem, EcsOnLoad, DisplayData($));
+  ECS_SYSTEM(world, UpdateInputsContextSystem, EcsOnLoad, InputsContext($),
+             DisplayData($));
 
   ECS_SYSTEM(world, ApplyControlsSystem, EcsOnUpdate, PhysicsBodyId,
              InputsContext($), TagControllable);
-  ECS_SYSTEM(world, SyncPhysicsSystem, EcsOnUpdate, Position, Velocity,
-             PhysicsBodyId);
-  ECS_SYSTEM(world, UpdateAnimation, EcsOnUpdate, Animation, InputsContext($),
-             AssetStore($));
-  ECS_SYSTEM(world, UpdateTilepicker, EcsOnUpdate, TilePicker, InputsContext($),
-             ScreenDims($), TextureConfig($), Tile($));
-  ECS_SYSTEM(world, UpdateTilemap, EcsOnUpdate, Tilemap, InputsContext($),
-             ScreenDims($), TextureConfig($), PlayerCamera($), Tile($));
-  ECS_SYSTEM(world, UpdatePlayerCamera, EcsOnUpdate, Position, PlayerCamera($),
-             ScreenDims($), GuiLayoutJungleState($), TagControllable);
+  ECS_SYSTEM(world, SyncPhysicsSystem, EcsOnUpdate, Position, Rotation,
+             Velocity, PhysicsBodyId);
+  ECS_SYSTEM(world, UpdateAnimationSystem, EcsOnUpdate, Animation,
+             InputsContext($), AssetStore($));
+  ECS_SYSTEM(world, UpdateTilePickerSystem, EcsOnUpdate, TilePicker,
+             InputsContext($), TextureConfig($), Tile($));
+  ECS_SYSTEM(world, UpdateTilemapSystem, EcsOnUpdate, Tilemap, InputsContext($),
+             TextureConfig($), PlayerCamera($), Tile($));
+  ECS_SYSTEM(world, UpdatePlayerCameraSystem, EcsOnUpdate, Position,
+             PlayerCamera($), GuiLayoutJungleState($), TagControllable);
 
-  ECS_SYSTEM(world, BeginDrawingSystem, EcsOnStore);
-  ECS_SYSTEM(world, DrawBackground, EcsOnStore, GuiLayoutJungleState($));
-  ECS_SYSTEM(world, BeginCameraMode, EcsOnStore,
+  ECS_SYSTEM(world, BeginTextureModeSystem, EcsOnStore,
+             VirtualScreen($)); // NOTE: texture mode begins
+  ECS_SYSTEM(world, DrawBackgroundSystem, EcsOnStore, GuiLayoutJungleState($));
+  ECS_SYSTEM(world, BeginCameraModeSystem, EcsOnStore,
              PlayerCamera($)); // NOTE: camera mode begins
-  ECS_SYSTEM(world, DrawColliders, EcsOnStore, Position, PhysicsBodyId,
-             BoxDimensions);
-  ECS_SYSTEM(world, DrawAnimations, EcsOnStore, Position, Animation,
+  ECS_SYSTEM(world, DrawCollidersSystem, EcsOnStore, Position, Rotation,
+             PhysicsBodyId, BoxDimensions);
+  ECS_SYSTEM(world, DrawAnimationsSystem, EcsOnStore, Position, Animation,
              AssetStore($), TextureConfig($));
   ECS_SYSTEM(world, DrawGridSystem, EcsOnStore, GuiLayoutJungleState($),
              TextureConfig($));
-  ECS_SYSTEM(world, DrawTilemap, EcsOnStore, Tilemap, TextureConfig($),
+  ECS_SYSTEM(world, DrawTilemapSystem, EcsOnStore, Tilemap, TextureConfig($),
              AssetStore($));
-  ECS_SYSTEM(world, DrawHoldingTile, EcsOnStore, AssetStore($),
+  ECS_SYSTEM(world, DrawHoldingTileSystem, EcsOnStore, AssetStore($),
              InputsContext($), TextureConfig($), PlayerCamera($), Tile($));
-  ECS_SYSTEM(world, EndCameraMode, EcsOnStore); // NOTE: camera mode ends
-  ECS_SYSTEM(world, DrawTilePicker, EcsOnStore, TilePicker, InputsContext($),
-             TextureConfig($), PlayerCamera($), Tile($), ScreenDims($),
+  ECS_SYSTEM(world, EndCameraModeSystem, EcsOnStore); // NOTE: camera mode ends
+  ECS_SYSTEM(world, DrawTilePickerSystem, EcsOnStore, TilePicker,
+             InputsContext($), TextureConfig($), PlayerCamera($), Tile($),
              AssetStore($));
-  ECS_SYSTEM(world, DrawGui, EcsOnStore, GuiLayoutJungleState($));
+  ECS_SYSTEM(world, EndTextureModeSystem,
+             EcsOnStore); // NOTE: texture mode ends
+  ECS_SYSTEM(world, BeginDrawingSystem, EcsOnStore);
+  ECS_SYSTEM(world, DrawVirtualScreenSystem, EcsOnStore, VirtualScreen($),
+             DisplayData($));
+  ECS_SYSTEM(world, DrawGuiSystem, EcsOnStore, GuiLayoutJungleState($));
   ECS_SYSTEM(world, EndDrawingSystem, EcsOnStore);
 }
 
 ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,
                                          b2WorldId b2_world_id, Position p,
-                                         Velocity v, BoxDimensions box_dims,
+                                         Rotation r, Velocity v,
+                                         BoxDimensions box_dims,
                                          PhysicsBody physics_body,
                                          PhysicsBodyShape physics_shape) {
   ecs_entity_t ent = ecs_new(world);
   ecs_set_id(world, ent, ecs_id(Position), sizeof(Position), &p);
   const Position *position = ecs_get(world, ent, Position);
+  ecs_set_id(world, ent, ecs_id(Rotation), sizeof(Rotation), &r);
+  const Rotation *rotation = ecs_get(world, ent, Rotation);
   ecs_set_id(world, ent, ecs_id(Velocity), sizeof(Velocity), &v);
   const Velocity *velocity = ecs_get(world, ent, Velocity);
   ecs_set_id(world, ent, ecs_id(BoxDimensions), sizeof(BoxDimensions),
@@ -258,9 +274,11 @@ ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,
 
   b2BodyDef BodyDef = b2DefaultBodyDef();
   BodyDef.type = body->body_type;
-  BodyDef.position = (b2Vec2){position->x, position->y};
+  BodyDef.position = raylibToBox2dVec(*position);
+  BodyDef.rotation = raylibToBox2dRot(rotation->rads);
   b2BodyId Id = b2CreateBody(b2_world_id, &BodyDef);
-  b2Polygon Box = b2MakeBox(dims->x, dims->y);
+  b2Vec2 b2dims = raylibToBox2dLengthUnit(*dims);
+  b2Polygon Box = b2MakeBox(b2dims.x, b2dims.y);
   b2ShapeDef ShapeDef = b2DefaultShapeDef();
   ShapeDef.density = shape->density;
   ShapeDef.material.friction = shape->mat_friction;
@@ -276,6 +294,7 @@ ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,
 void createPhysicalBoxForEntity(ecs_world_t *world, ecs_entity_t ent,
                                 b2WorldId b2_world_id) {
   const Position *position = ecs_get(world, ent, Position);
+  const Rotation *rotation = ecs_get(world, ent, Rotation);
   const Velocity *velocity = ecs_get(world, ent, Velocity);
   const BoxDimensions *dims = ecs_get(world, ent, BoxDimensions);
   const PhysicsBody *body = ecs_get(world, ent, PhysicsBody);
@@ -283,9 +302,11 @@ void createPhysicalBoxForEntity(ecs_world_t *world, ecs_entity_t ent,
 
   b2BodyDef BodyDef = b2DefaultBodyDef();
   BodyDef.type = body->body_type;
-  BodyDef.position = (b2Vec2){position->x, position->y};
+  BodyDef.position = raylibToBox2dVec(*position);
+  BodyDef.rotation = raylibToBox2dRot(rotation->rads);
   b2BodyId Id = b2CreateBody(b2_world_id, &BodyDef);
-  b2Polygon Box = b2MakeBox(dims->x, dims->y);
+  b2Vec2 b2dims = raylibToBox2dLengthUnit(*dims);
+  b2Polygon Box = b2MakeBox(b2dims.x, b2dims.y);
   b2ShapeDef ShapeDef = b2DefaultShapeDef();
   ShapeDef.density = shape->density;
   ShapeDef.material.friction = shape->mat_friction;

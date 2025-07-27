@@ -21,12 +21,13 @@
 #include "lib/utils.h"
 #include "modules/module.h"
 
+ECS_COMPONENT_DECLARE(VirtualScreen);
 ECS_COMPONENT_DECLARE(Gravity);
 ECS_COMPONENT_DECLARE(Position);
 ECS_COMPONENT_DECLARE(BoxDimensions);
 ECS_COMPONENT_DECLARE(InputsContext);
 ECS_COMPONENT_DECLARE(GuiLayoutJungleState);
-ECS_COMPONENT_DECLARE(ScreenDims);
+ECS_COMPONENT_DECLARE(DisplayData);
 ECS_COMPONENT_DECLARE(AssetStore);
 ECS_COMPONENT_DECLARE(PhysicsBody);
 ECS_COMPONENT_DECLARE(PhysicsBodyShape);
@@ -55,25 +56,36 @@ int main() {
 #error "Build type not specified"
 #endif
 
-  ScreenDims init_screen_dims = {.x = 600, .y = 400};
+  DisplayData init_display_data = {0};
+  init_display_data.screen_dims =
+      (Vector2){.x = VIRTUAL_WIDTH, .y = VIRTUAL_HEIGHT};
   // Raylib
-  SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI);
-  InitWindow(init_screen_dims.x, init_screen_dims.y, "Da Game");
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+  InitWindow(init_display_data.screen_dims.x, init_display_data.screen_dims.y,
+             "Da Game");
 
   Vector2 dpi_factor = GetWindowScaleDPI();
 
   int curr_mon = GetCurrentMonitor();
-  init_screen_dims.x = GetMonitorWidth(curr_mon);
-  init_screen_dims.y = GetMonitorHeight(curr_mon);
+  init_display_data.screen_dims.x = GetMonitorWidth(curr_mon);
+  init_display_data.screen_dims.y = GetMonitorHeight(curr_mon);
 
 #ifdef __APPLE__
-  init_screen_dims.y -= 65; // Reduce height because of the notch
-#endif                      /* ifdef __APPLE__ */
+  init_display_data.screen_dims.y -= 65; // Reduce height because of the notch
+#endif                                   /* ifdef __APPLE__ */
 
-  SetWindowSize(init_screen_dims.x, init_screen_dims.y);
+  SetWindowSize(init_display_data.screen_dims.x,
+                init_display_data.screen_dims.y);
   SetWindowPosition(0, 0);
   MaximizeWindow();
   SetExitKey(KEY_ESCAPE);
+
+  // Create render target at virtual res
+  RenderTexture2D render_target =
+      LoadRenderTexture(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+  // Set filter for crisp pixels (nearest-neighbor)
+  SetTextureFilter(render_target.texture, TEXTURE_FILTER_POINT);
 
   // Flecs
   ecs_world_t *world = ecs_init();
@@ -81,13 +93,13 @@ int main() {
     ECS_IMPORT(world, MainModule);
   }
 
-  ScreenDims *screen_dims = ecs_singleton_ensure(world, ScreenDims);
-  screen_dims->x = init_screen_dims.x;
-  screen_dims->y = init_screen_dims.y;
+  VirtualScreen *virtual_screen = ecs_singleton_ensure(world, VirtualScreen);
+  *virtual_screen = render_target;
+  DisplayData *display_data = ecs_singleton_ensure(world, DisplayData);
+  display_data->screen_dims = init_display_data.screen_dims;
   AssetStore *asset_store = ecs_singleton_ensure(world, AssetStore);
   TextureConfig *tex_conf = ecs_singleton_ensure(world, TextureConfig);
   // Must be multiple of 1
-  tex_conf->scale = 2;
   tex_conf->tile_w = 32;
   tex_conf->tile_h = 32;
   GuiLayoutJungleState *settings_state =
@@ -127,7 +139,7 @@ int main() {
   // Load save if available
   if (ecs_world_from_json_file(world, "assets/save.json", NULL) != NULL) {
     printf("Loading save...\n");
-    // Create box 2d
+    // Create boxes for 2d
     ecs_query_t *q =
         ecs_query(world, {.terms = {{.id = ecs_id(Position)},
                                     {.id = ecs_id(BoxDimensions)},
@@ -143,9 +155,9 @@ int main() {
     }
   } else {
     printf("Initializing new game...\n");
-    Tilemap tilemap_ = {0};
+    Tilemap tilemap = {0};
     ecs_entity_t tilemap_ent = ecs_new(world);
-    ecs_set_id(world, tilemap_ent, ecs_id(Tilemap), sizeof(Tilemap), &tilemap_);
+    ecs_set_id(world, tilemap_ent, ecs_id(Tilemap), sizeof(Tilemap), &tilemap);
     ecs_add(world, tilemap_ent, Tilemap);
 
     TilePicker tp = {0};
@@ -191,17 +203,18 @@ int main() {
                &tp);
     ecs_add(world, tilepicker_ent, TilePicker);
 
+    // Game objects
     ecs_entity_t ground_ent = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = -10},
-        (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 150.0f, .y = 10.0f},
+        world, worldId, (Position){.x = 0, .y = 50}, (Rotation){.rads = 0},
+        (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 500, .y = 50},
         (PhysicsBody){.body_type = b2_staticBody},
         (PhysicsBodyShape){
             .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.2f});
     ecs_add(world, ground_ent, TagStatic);
 
     ecs_entity_t hero = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = 10}, (Velocity){.x = 0, .y = 0},
-        (BoxDimensions){.x = 1.0f, .y = 1.0f},
+        world, worldId, (Position){.x = 0, .y = -100}, (Rotation){.rads = 0},
+        (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 10, .y = 10},
         (PhysicsBody){.body_type = b2_dynamicBody},
         (PhysicsBodyShape){
             .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
@@ -222,9 +235,9 @@ int main() {
     for (int i = 0; i < 5; ++i) {
       for (int j = 0; j < 2; ++j) {
         ecs_entity_t cube_ent = createEntityWithPhysicalBox(
-            world, worldId,
-            (Position){.x = 5.0f * (j + 1), .y = 15.0f + 5.0f * i},
-            (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 1.0f, .y = 1.0f},
+            world, worldId, (Position){.x = 50 * (j + 1), .y = -150 - 50 * i},
+            (Rotation){.rads = 0}, (Velocity){.x = 0, .y = 0},
+            (BoxDimensions){.x = 10, .y = 10},
             (PhysicsBody){.body_type = b2_dynamicBody},
             (PhysicsBodyShape){
                 .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
@@ -258,9 +271,6 @@ int main() {
 
   // ------------ Cleanup ------------
 
-  // when aborting jump straight to cleanup
-cleanup:;
-
   // Save game
   char *json = ecs_world_to_json(world, NULL);
   FILE *save_file_w = fopen("assets/save.json", "w");
@@ -283,7 +293,9 @@ cleanup:;
   ecs_fini(world);
   b2DestroyWorld(worldId);
   freeAssetStore(asset_store);
+  UnloadRenderTexture(render_target);
   CloseWindow();
+
   return EXIT_SUCCESS;
 
   // ------------------------

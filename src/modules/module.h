@@ -10,7 +10,8 @@ void MainModuleImport(ecs_world_t *world);
 // Creates an new entity and a new physical box for it.
 ecs_entity_t createEntityWithPhysicalBox(ecs_world_t *world,
                                          b2WorldId b2_world_id, Position p,
-                                         Velocity v, BoxDimensions box_dims,
+                                         Rotation r, Velocity v,
+                                         BoxDimensions box_dims,
                                          PhysicsBody physics_body,
                                          PhysicsBodyShape physics_shape);
 

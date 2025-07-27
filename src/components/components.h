@@ -7,7 +7,15 @@
 #include "flecs.h"
 #include "raylib.h"
 
-typedef Vector2 ScreenDims;
+typedef RenderTexture2D VirtualScreen;
+
+typedef struct DisplayData {
+  Vector2 render_dims;
+  Vector2 screen_dims;
+  float virtual_scalar;
+  float virtual_offset_x;
+  float virtual_offset_y;
+} DisplayData;
 
 typedef Vector2 Gravity;
 
@@ -16,6 +24,11 @@ typedef Vector2 BoxDimensions;
 typedef Vector2 Position;
 
 typedef Vector2 Velocity;
+
+typedef struct Rotation {
+  // in range -pi, pi
+  float rads;
+} Rotation;
 
 typedef struct PhysicsBody {
   b2BodyType body_type;
@@ -58,6 +71,7 @@ typedef struct InputsContext {
   float delta_t;
   KeyboardInputs kb_inputs;
   Vector2 mouse_pos;
+  Vector2 mouse_virtual;
 } InputsContext;
 
 typedef Camera2D PlayerCamera;
@@ -92,7 +106,6 @@ typedef enum {
 } TextureChoice;
 
 typedef struct TextureConfig {
-  int scale;
   int tile_w;
   int tile_h;
 } TextureConfig;

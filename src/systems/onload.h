@@ -4,5 +4,5 @@
 #include "flecs.h"
 #include "raylib.h"
 
-void SyncScreenDims(ecs_iter_t *it);
+void SyncDisplayDataSystem(ecs_iter_t *it);
 void UpdateInputsContextSystem(ecs_iter_t *it);

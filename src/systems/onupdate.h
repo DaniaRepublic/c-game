@@ -6,7 +6,7 @@
 
 void SyncPhysicsSystem(ecs_iter_t *it);
 void ApplyControlsSystem(ecs_iter_t *it);
-void UpdateAnimation(ecs_iter_t *it);
-void UpdatePlayerCamera(ecs_iter_t *it);
-void UpdateTilemap(ecs_iter_t *it);
-void UpdateTilepicker(ecs_iter_t *it);
+void UpdateAnimationSystem(ecs_iter_t *it);
+void UpdatePlayerCameraSystem(ecs_iter_t *it);
+void UpdateTilemapSystem(ecs_iter_t *it);
+void UpdateTilePickerSystem(ecs_iter_t *it);

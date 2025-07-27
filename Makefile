@@ -29,3 +29,6 @@ run-target:
 clean:
 	rm -rf build-dev
 	rm -rf build-target
+
+delete-save:
+	rm assets/save.json

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "box2d/math_functions.h"
 #include "raylib.h"
 
 // gui implementations
@@ -7,6 +8,18 @@
 #include "lib/gui/jungle.h"
 
 #include "components/components.h"
+
+Vector2 box2dToRaylibLengthUnit(b2Vec2 vec);
+
+b2Vec2 raylibToBox2dLengthUnit(Vector2 vec);
+
+Vector2 box2dToRaylibVec(b2Vec2 vec);
+
+b2Vec2 raylibToBox2dVec(Vector2 vec);
+
+float box2dToRaylibRot(b2Rot rot);
+
+b2Rot raylibToBox2dRot(float rot);
 
 static int settingsParser(void *user, const char *section, const char *name,
                           const char *value);

@@ -2,10 +2,35 @@
 #include <stdio.h>
 
 #include "components/components.h"
+#include "lib/config.h"
 #include "lib/ini.h"
 #include "raylib.h"
 
 #include "utils.h"
+
+Vector2 box2dToRaylibLengthUnit(b2Vec2 vec) {
+  return (Vector2){.x = vec.x * BOX2D_TO_RAYLIB_SCALAR,
+                   .y = vec.y * BOX2D_TO_RAYLIB_SCALAR};
+}
+
+b2Vec2 raylibToBox2dLengthUnit(Vector2 vec) {
+  return (b2Vec2){.x = vec.x / BOX2D_TO_RAYLIB_SCALAR,
+                  .y = vec.y / BOX2D_TO_RAYLIB_SCALAR};
+}
+
+Vector2 box2dToRaylibVec(b2Vec2 vec) {
+  return (Vector2){.x = vec.x * BOX2D_TO_RAYLIB_SCALAR,
+                   .y = -vec.y * BOX2D_TO_RAYLIB_SCALAR};
+}
+
+b2Vec2 raylibToBox2dVec(Vector2 vec) {
+  return (b2Vec2){.x = vec.x / BOX2D_TO_RAYLIB_SCALAR,
+                  .y = -vec.y / BOX2D_TO_RAYLIB_SCALAR};
+}
+
+float box2dToRaylibRot(b2Rot rot) { return -b2Rot_GetAngle(rot); }
+
+b2Rot raylibToBox2dRot(float rot) { return b2MakeRot(-rot); }
 
 /*  Example settings.ini:
  *
@@ -20,6 +45,7 @@ static int settingsParser(void *user, const char *section, const char *name,
   GuiLayoutJungleState *settings = (GuiLayoutJungleState *)user;
 
 #define MATCH(s, n) strcmp(section, s) == 0 && strcmp(name, n) == 0
+
   if (MATCH("settings", "WindowBox000Active")) {
     settings->WindowBox000Active = atoi(value) == 1;
   } else if (MATCH("settings", "Slider001Value")) {

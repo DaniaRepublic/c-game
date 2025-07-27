@@ -22,8 +22,22 @@ make
   - [ ] Shaders           |xx:xx-xx:xx|
 
 ### Notes
-Refactor code put ALL data in components.
-Editor needs entity picker. Also adding physics to editor entities.
+Raylib and Box2D have different directions of y-axis. \
+All values are from perspective of Raylib as it's what i see. \
+Conversions for Box2D and back are made when necessary. \
+
+Conversions (0.1m is minimum distance in Box2D): \
+0.1m in Box2D = 1px in Raylib
+
+This means that 1 unit is one pixel in my game.
+
+Virtual resolution is 640x360: \
+2x = 1280x720 \
+3x = 1920x1080 \
+4x = 2560x1440 \
+6x = 3840x2160
+
+Physical dimensions of virtual world are 64m x 36m
 
 ### Steam relevant stats
   - https://store.steampowered.com/hwsurvey/
