@@ -9,6 +9,7 @@
 #include "components/components.h"
 #include "lib/config.h"
 #include "lib/utils.h"
+#include "modules/module.h"
 #include "onupdate.h"
 
 void SyncPhysicsSystem(ecs_iter_t *it) {
@@ -90,55 +91,81 @@ void UpdatePlayerCameraSystem(ecs_iter_t *it) {
 }
 
 void UpdateTilemapSystem(ecs_iter_t *it) {
-  Tilemap *tilemap = ecs_field(it, Tilemap, 0);
-  const InputsContext *inputs_ctx = ecs_field(it, InputsContext, 1);
-  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 2);
-  const PlayerCamera *hero_cam = ecs_field(it, PlayerCamera, 3);
-  const Tile *selected_tile = ecs_field(it, Tile, 4);
+  const Position *positions = ecs_field(it, Position, 0);
+  const PhysicsBodyId *body_ids = ecs_field(it, PhysicsBodyId, 1);
+  const Tile *tiles = ecs_field(it, Tile, 2);
+  const InputsContext *inputs_ctx = ecs_field(it, InputsContext, 3);
+  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 4);
+  const PlayerCamera *hero_cam = ecs_field(it, PlayerCamera, 5);
+  const Tile *selected_tile = ecs_field(it, Tile, 6);
+  const PhysicsWorld *physics_world = ecs_field(it, PhysicsWorld, 7);
 
   Vector2 world_mouse =
       GetScreenToWorld2D(inputs_ctx->mouse_virtual, *hero_cam);
 
-  Rectangle picker_rect = {.x = 0,
-                           .y = VIRTUAL_HEIGHT -
-                                (tex_conf->tile_h * NUM_TILEPICKER_ROWS),
-                           .width = tex_conf->tile_w * NUM_TILEPICKER_COLS,
-                           .height = tex_conf->tile_h * NUM_TILEPICKER_ROWS};
-  bool over_picker =
-      CheckCollisionPointRec(inputs_ctx->mouse_virtual, picker_rect);
+  bool tile_selected = memcmp(selected_tile, &(Tile){0}, sizeof(Tile)) != 0;
 
-  if (memcmp(selected_tile, &(Tile){0}, sizeof(Tile)) != 0 &&
-      inputs_ctx->kb_inputs.l_down && !over_picker) {
-    int dest_x = ((int)world_mouse.x / tex_conf->tile_w) * tex_conf->tile_w -
-                 (world_mouse.x < 0 ? tex_conf->tile_w : 0);
-    int dest_y = ((int)world_mouse.y / tex_conf->tile_h) * tex_conf->tile_h -
-                 (world_mouse.y < 0 ? tex_conf->tile_h : 0);
+  bool over_picker = CheckCollisionPointRec(
+      inputs_ctx->mouse_virtual,
+      (Rectangle){.x = 0,
+                  .y =
+                      VIRTUAL_HEIGHT - (tex_conf->tile_h * NUM_TILEPICKER_ROWS),
+                  .width = tex_conf->tile_w * NUM_TILEPICKER_COLS,
+                  .height = tex_conf->tile_h * NUM_TILEPICKER_ROWS});
 
+  if (tile_selected && !over_picker && inputs_ctx->kb_inputs.l_down) {
     Tile tile = *selected_tile;
+    Position dest = {
+        .x = ((int)world_mouse.x / tex_conf->tile_w) * tex_conf->tile_w -
+             (world_mouse.x < 0 ? tex_conf->tile_w : 0),
+        .y = ((int)world_mouse.y / tex_conf->tile_h) * tex_conf->tile_h -
+             (world_mouse.y < 0 ? tex_conf->tile_h : 0)};
+
     // hadle eraser tool first
     if (tile.tex_choice == __TEX_ERASER) {
-      for (int i = 0; i < tilemap->num_tiles; ++i) {
-        if (tilemap->tiles[i].pos_x == dest_x &&
-            tilemap->tiles[i].pos_y == dest_y) {
-          --tilemap->num_tiles;
-          tilemap->tiles[i] = tilemap->tiles[tilemap->num_tiles];
+      ecs_defer_begin(it->world);
+      for (int i = 0; i < it->count; ++i) {
+        if (positions[i].x == dest.x && positions[i].y == dest.y) {
+          if (b2Body_IsValid(body_ids[i].body_id))
+            b2DestroyBody(body_ids[i].body_id);
+          ecs_delete(it->world, it->entities[i]);
         }
       }
+      ecs_defer_end(it->world);
     } else {
       // remove existing
-      for (int i = 0; i < tilemap->num_tiles; ++i) {
-        if (tilemap->tiles[i].pos_x == dest_x &&
-            tilemap->tiles[i].pos_y == dest_y) {
-          --tilemap->num_tiles;
-          tilemap->tiles[i] = tilemap->tiles[tilemap->num_tiles];
-          break;
+      // BUG: the problem with deleting here is that physics is not incorporated
+      // into ecs, and so as fps is much higher, items are added to ecs and
+      // attempted to be deleted before they are added to physics world.
+      ecs_defer_begin(it->world);
+      for (int i = 0; i < it->count; ++i) {
+        if (positions[i].x == dest.x && positions[i].y == dest.y) {
+          if (b2Body_IsValid(body_ids[i].body_id)) {
+            printf("body generation=%d index1=%d world0=%d validated\n",
+                   body_ids[i].body_id.generation, body_ids[i].body_id.index1,
+                   body_ids[i].body_id.world0);
+            b2DestroyBody(body_ids[i].body_id);
+            printf("body generation=%d index1=%d world0=%d deleted\n",
+                   body_ids[i].body_id.generation, body_ids[i].body_id.index1,
+                   body_ids[i].body_id.world0);
+          }
+          ecs_delete(it->world, it->entities[i]);
         }
       }
-      // add new
-      if (tilemap->num_tiles < NUM_TILEMAP_TILES) {
-        tile.pos_x = dest_x;
-        tile.pos_y = dest_y;
-        tilemap->tiles[tilemap->num_tiles++] = tile;
+      ecs_defer_end(it->world);
+
+      if (true) { // TODO: (  < MAX_TILES_FOR_MAP) {
+        // add new
+        ecs_entity_t tile_ent = createEntityWithPhysicalBox(
+            it->world, physics_world->b2_world_id, dest, (Rotation){.rads = 0},
+            (Velocity){.x = 0, .y = 0},
+            (BoxDimensions){.x = tex_conf->tile_w, .y = tex_conf->tile_h},
+            (PhysicsBody){.body_type = b2_staticBody},
+            (PhysicsBodyShape){
+                .density = 1, .mat_friction = 0.1f, .mat_restitution = 0.1f});
+        ecs_add(it->world, tile_ent, TagStatic);
+        ecs_add(it->world, tile_ent, TagTile);
+        ecs_set_id(it->world, tile_ent, ecs_id(Tile), sizeof(Tile), &tile);
       }
     }
   }

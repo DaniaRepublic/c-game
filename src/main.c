@@ -11,6 +11,7 @@
 #include "flecs/addons/flecs_c.h"
 #include "flecs/os_api.h"
 #include "flecs/private/addons.h"
+#include "flecs/private/api_defines.h"
 #include "lib/config.h"
 #include "raylib.h"
 
@@ -20,29 +21,6 @@
 #include "components/components.h"
 #include "lib/utils.h"
 #include "modules/module.h"
-
-ECS_COMPONENT_DECLARE(VirtualScreen);
-ECS_COMPONENT_DECLARE(Gravity);
-ECS_COMPONENT_DECLARE(Position);
-ECS_COMPONENT_DECLARE(BoxDimensions);
-ECS_COMPONENT_DECLARE(InputsContext);
-ECS_COMPONENT_DECLARE(GuiLayoutJungleState);
-ECS_COMPONENT_DECLARE(DisplayData);
-ECS_COMPONENT_DECLARE(AssetStore);
-ECS_COMPONENT_DECLARE(PhysicsBody);
-ECS_COMPONENT_DECLARE(PhysicsBodyShape);
-ECS_COMPONENT_DECLARE(PhysicsBodyId);
-ECS_COMPONENT_DECLARE(Animation);
-ECS_COMPONENT_DECLARE(TextureChoice);
-ECS_COMPONENT_DECLARE(TextureConfig);
-ECS_COMPONENT_DECLARE(PlayerCamera);
-ECS_COMPONENT_DECLARE(Tile);
-ECS_COMPONENT_DECLARE(Tilemap);
-ECS_COMPONENT_DECLARE(TilePicker);
-
-ECS_TAG_DECLARE(TagControllable);
-ECS_TAG_DECLARE(TagStatic);
-ECS_TAG_DECLARE(TagCube);
 
 int main() {
 
@@ -93,6 +71,7 @@ int main() {
     ECS_IMPORT(world, MainModule);
   }
 
+  PhysicsWorld *physics_world = ecs_singleton_ensure(world, PhysicsWorld);
   VirtualScreen *virtual_screen = ecs_singleton_ensure(world, VirtualScreen);
   *virtual_screen = render_target;
   DisplayData *display_data = ecs_singleton_ensure(world, DisplayData);
@@ -104,7 +83,6 @@ int main() {
   tex_conf->tile_h = 32;
   GuiLayoutJungleState *settings_state =
       ecs_singleton_ensure(world, GuiLayoutJungleState);
-  Tile *selected_tile = ecs_singleton_ensure(world, Tile);
 
   // load ghost animation
   freeSetTex(TEX_TILESET_CONCRETE, LoadTexture("assets/concrete-tiles.png"),
@@ -132,33 +110,34 @@ int main() {
   ecs_set(world, world_ent, Gravity, {.x = 0, .y = -10});
   const Gravity *gravity = ecs_get(world, world_ent, Gravity);
 
-  b2WorldDef worldDef = b2DefaultWorldDef();
-  worldDef.gravity = (b2Vec2){.x = gravity->x, .y = gravity->y};
-  b2WorldId worldId = b2CreateWorld(&worldDef);
+  b2WorldDef world_def = b2DefaultWorldDef();
+  world_def.gravity = (b2Vec2){.x = gravity->x, .y = gravity->y};
+  b2WorldId b2_world_id = b2CreateWorld(&world_def);
+  physics_world->b2_world_id = b2_world_id;
 
   // Load save if available
   if (ecs_world_from_json_file(world, "assets/save.json", NULL) != NULL) {
     printf("Loading save...\n");
+
     // Create boxes for 2d
     ecs_query_t *q =
         ecs_query(world, {.terms = {{.id = ecs_id(Position)},
+                                    {.id = ecs_id(Rotation)},
+                                    {.id = ecs_id(Velocity)},
                                     {.id = ecs_id(BoxDimensions)},
                                     {.id = ecs_id(PhysicsBody)},
-                                    {.id = ecs_id(PhysicsBodyShape)}},
+                                    {.id = ecs_id(PhysicsBodyShape)},
+                                    {.id = ecs_id(PhysicsBodyId)}},
                           .cache_kind = EcsQueryCacheNone});
     ecs_iter_t it = ecs_query_iter(world, q);
     while (ecs_query_next(&it)) {
       for (int i = 0; i < it.count; ++i) {
         ecs_entity_t q_ent = it.entities[i];
-        createPhysicalBoxForEntity(world, q_ent, worldId);
+        createPhysicalBoxForEntity(world, q_ent, b2_world_id);
       }
     }
   } else {
     printf("Initializing new game...\n");
-    Tilemap tilemap = {0};
-    ecs_entity_t tilemap_ent = ecs_new(world);
-    ecs_set_id(world, tilemap_ent, ecs_id(Tilemap), sizeof(Tilemap), &tilemap);
-    ecs_add(world, tilemap_ent, Tilemap);
 
     TilePicker tp = {0};
     tp.tile_w = tex_conf->tile_w;
@@ -201,11 +180,10 @@ int main() {
     ecs_entity_t tilepicker_ent = ecs_new(world);
     ecs_set_id(world, tilepicker_ent, ecs_id(TilePicker), sizeof(TilePicker),
                &tp);
-    ecs_add(world, tilepicker_ent, TilePicker);
 
     // Game objects
     ecs_entity_t ground_ent = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = 50}, (Rotation){.rads = 0},
+        world, b2_world_id, (Position){.x = 0, .y = 50}, (Rotation){.rads = 0},
         (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 500, .y = 50},
         (PhysicsBody){.body_type = b2_staticBody},
         (PhysicsBodyShape){
@@ -213,8 +191,9 @@ int main() {
     ecs_add(world, ground_ent, TagStatic);
 
     ecs_entity_t hero = createEntityWithPhysicalBox(
-        world, worldId, (Position){.x = 0, .y = -100}, (Rotation){.rads = 0},
-        (Velocity){.x = 0, .y = 0}, (BoxDimensions){.x = 10, .y = 10},
+        world, b2_world_id, (Position){.x = 0, .y = -100},
+        (Rotation){.rads = 0}, (Velocity){.x = 0, .y = 0},
+        (BoxDimensions){.x = 10, .y = 10},
         (PhysicsBody){.body_type = b2_dynamicBody},
         (PhysicsBodyShape){
             .density = 1, .mat_friction = 0.6f, .mat_restitution = 0.9f});
@@ -235,7 +214,8 @@ int main() {
     for (int i = 0; i < 5; ++i) {
       for (int j = 0; j < 2; ++j) {
         ecs_entity_t cube_ent = createEntityWithPhysicalBox(
-            world, worldId, (Position){.x = 50 * (j + 1), .y = -150 - 50 * i},
+            world, b2_world_id,
+            (Position){.x = 50 * (j + 1), .y = -150 - 50 * i},
             (Rotation){.rads = 0}, (Velocity){.x = 0, .y = 0},
             (BoxDimensions){.x = 10, .y = 10},
             (PhysicsBody){.body_type = b2_dynamicBody},
@@ -254,12 +234,16 @@ int main() {
 
     // ------------ Main loop ------------
 
+    // BUG: physics is not incorporated into ecs, and so as fps is much higher,
+    // items are added to ecs and attempted to be deleted before they are added
+    // to physics world.
+    // TODO: incorporate physics into ecs.
     float delta_t = GetFrameTime();
     time_acc += delta_t;
 
     // Step physics one fixed time step at a time for accumulated #steps
     while (time_acc >= PHYS_TIME_STEP) {
-      b2World_Step(worldId, PHYS_TIME_STEP, 4);
+      b2World_Step(b2_world_id, PHYS_TIME_STEP, 4);
       time_acc -= PHYS_TIME_STEP;
     }
 
@@ -291,7 +275,7 @@ int main() {
   }
 
   ecs_fini(world);
-  b2DestroyWorld(worldId);
+  b2DestroyWorld(b2_world_id);
   freeAssetStore(asset_store);
   UnloadRenderTexture(render_target);
   CloseWindow();

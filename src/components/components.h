@@ -30,6 +30,10 @@ typedef struct Rotation {
   float rads;
 } Rotation;
 
+typedef struct PhysicsWorld {
+  b2WorldId b2_world_id;
+} PhysicsWorld;
+
 typedef struct PhysicsBody {
   b2BodyType body_type;
 } PhysicsBody;
@@ -136,12 +140,7 @@ typedef struct {
   int pos_x, pos_y;
 } Tile;
 
-#define NUM_TILEMAP_TILES 2048
-
-typedef struct {
-  Tile tiles[NUM_TILEMAP_TILES];
-  int num_tiles;
-} Tilemap;
+#define MAX_TILES_FOR_MAP 2000
 
 typedef struct {
   Vector2 anchor01;

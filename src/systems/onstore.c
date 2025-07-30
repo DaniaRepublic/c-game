@@ -115,13 +115,14 @@ void DrawGridSystem(ecs_iter_t *it) {
 }
 
 void DrawTilemapSystem(ecs_iter_t *it) {
-  Tilemap *tilemap = ecs_field(it, Tilemap, 0);
-  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 1);
-  const AssetStore *asset_store = ecs_field(it, AssetStore, 2);
+  Position *positions = ecs_field(it, Position, 0);
+  Tile *tiles = ecs_field(it, Tile, 1);
+  const TextureConfig *tex_conf = ecs_field(it, TextureConfig, 2);
+  const AssetStore *asset_store = ecs_field(it, AssetStore, 3);
 
   // Draw tiles here
-  for (int i = 0; i < tilemap->num_tiles; ++i) {
-    Tile tile = tilemap->tiles[i];
+  for (int i = 0; i < it->count; ++i) {
+    Tile tile = tiles[i];
     DrawTexturePro(getTex(tile.tex_choice, asset_store),
                    (Rectangle){
                        .x = tile.offset_x,
@@ -130,8 +131,8 @@ void DrawTilemapSystem(ecs_iter_t *it) {
                        .height = tile.tile_h,
                    },
                    (Rectangle){
-                       .x = tile.pos_x,
-                       .y = tile.pos_y,
+                       .x = positions[i].x,
+                       .y = positions[i].y,
                        .width = tile.tile_w,
                        .height = tile.tile_h,
                    },
